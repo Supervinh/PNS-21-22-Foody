@@ -14,11 +14,11 @@ public class UserProfile extends AppCompatActivity {
 
     public void afficherInformations(User autreUtilisateur){
         //peut être avec intent ?
-        TextView nomUtilisateur = findViewById(R.id.nomUtilisateur);
+        TextView nomUtilisateur = findViewById(R.id.nomAutreUtilisateur);
         nomUtilisateur.setText(autreUtilisateur.firstName+autreUtilisateur.lastName);
-        TextView nbRestos = findViewById(R.id.nbRestos);
+        TextView nbRestos = findViewById(R.id.nbRestosAutre);
         nbRestos.setText("Nombre de restaurants visités : " + autreUtilisateur.nbRestosVisites);
-        TextView pointsUtilisateur = findViewById(R.id.pointsUtilisateur);
+        TextView pointsUtilisateur = findViewById(R.id.pointsAutreUtilisateur);
         pointsUtilisateur.setText("Nutripoints : " + autreUtilisateur.nutriPoints);
     }
 
