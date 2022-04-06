@@ -1,3 +1,2 @@
 # Foody
 Projet IHM
-PROJET IHM DE MERDE
