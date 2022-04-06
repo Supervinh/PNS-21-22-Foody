@@ -7,6 +7,7 @@ public class User {
     String firstName;
     String lastName;
     int nutriPoints;
+    int nbRestosVisites;
 
     List<Restaurant> favoriteRestaurants;
     List<Restaurant> recentRestaurants;
@@ -20,10 +21,12 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         nutriPoints = 0;
+        nbRestosVisites = 0;
         favoriteRestaurants = new ArrayList<>();
         recentRestaurants = new ArrayList<>();
         subscriptions = new ArrayList<>();
         posts = new ArrayList<>();
+
         
     }
 
