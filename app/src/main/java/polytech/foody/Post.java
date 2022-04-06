@@ -11,8 +11,8 @@ public class Post extends Comment {
     List<Comment> comments;
 
 
-    public Post(String content, Post commentedPost, User author, Restaurant place, String image) {
-        super(content, commentedPost, author);
+    public Post(String content, User author, Restaurant place, String image) {
+        super(content, author);
         this.place = place;
         this.image = image;
         this.nbLikes = 0;

@@ -1,4 +1,8 @@
 package polytech.foody;
 
-public class PostCreation {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PostCreation extends AppCompatActivity {
+
+
 }
