@@ -7,10 +7,7 @@
     tools:context=".MainActivity">
     <include
         android:id = "@+id/mytoolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        layout="@layout/toolbar"/>
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,7 +17,7 @@
         tools:context=".MainActivity">
 
 
-        <include layout="@layout/footer"/>
+        <include layout="@layout/footer" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
