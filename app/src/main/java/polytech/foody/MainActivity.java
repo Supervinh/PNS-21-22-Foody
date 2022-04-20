@@ -1,15 +1,15 @@
 package polytech.foody;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements IPictureActivity{
-    private Bitmap picture;
-    private PictureFragment pictureFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
+public class MainActivity extends AppCompatActivity implements IPictureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +19,14 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity{
         String txt = "Foody";
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
+
+
+        findViewById( R.id.post ).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Post.class);
+                startActivity(intent);
+            }
+        });
     }
 }

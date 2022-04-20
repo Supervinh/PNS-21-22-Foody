@@ -22,10 +22,10 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="543dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="50"
-        android:src="@drawable/picture"
-        android:layout_marginTop="10dp" />
+        android:src="@drawable/picture" />
 
 
     <Button
