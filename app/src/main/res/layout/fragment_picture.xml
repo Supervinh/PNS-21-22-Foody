@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF2E2"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".PictureFragment">
+
+
+    <TextView
+        android:id="@+id/labeInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Take a picture!"
+        android:gravity="center"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:src="@drawable/picture"
+        android:layout_marginTop="10dp" />
+
+
+    <Button
+        android:id="@+id/buttonImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Capture Image"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_marginTop="30dp" />
+
+</LinearLayout>
