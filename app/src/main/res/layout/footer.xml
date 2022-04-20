@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Footer aligned to bottom -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:id="@+id/footer"
 android:layout_width="fill_parent"
 android:layout_height="50dp"
@@ -9,46 +9,61 @@ android:layout_alignParentBottom="true"
 android:layout_alignParentStart="true"
 android:layout_alignParentEnd="true"
 android:gravity="center_horizontal"
-android:background="@color/teal_700"
+android:background="@android:color/holo_blue_dark"
 >
 
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="5dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/back" />
 
     <ImageButton
         android:id="@+id/btn_search"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/search" />
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toEndOf="@id/btn_back"
+        android:background="@drawable/search"
+        android:contentDescription="@string/feed" />
 
     <ImageButton
         android:id="@+id/btn_home"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginVertical="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/home" />
 
     <ImageButton
         android:id="@+id/btn_add_post"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="5dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="40dp"
+        android:layout_toStartOf="@id/btn_profile"
         android:background="@drawable/add_post" />
 
     <ImageButton
         android:id="@+id/btn_profile"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_margin="5dp"
-        android:background="@drawable/profile" />
+        android:background="@drawable/profile"
+        android:layout_alignParentEnd="true"/>
 
-</LinearLayout>
+</RelativeLayout>
 
 
