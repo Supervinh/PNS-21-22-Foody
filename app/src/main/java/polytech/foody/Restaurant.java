@@ -29,4 +29,68 @@ public class Restaurant {
         this.nombreDeNotes++;
         this.score /= nombreDeNotes;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getNutriPoints() {
+        return nutriPoints;
+    }
+
+    public void setNutriPoints(int nutriPoints) {
+        this.nutriPoints = nutriPoints;
+    }
+
+    public int getVisitors() {
+        return visitors;
+    }
+
+    public void setVisitors(int visitors) {
+        this.visitors = visitors;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public int getNombreDeNotes() {
+        return nombreDeNotes;
+    }
+
+    public void setNombreDeNotes(int nombreDeNotes) {
+        this.nombreDeNotes = nombreDeNotes;
+    }
 }

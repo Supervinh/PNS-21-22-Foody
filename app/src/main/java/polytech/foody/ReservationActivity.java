@@ -2,6 +2,7 @@ package polytech.foody;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +12,9 @@ public class ReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation);
 
+        String txt = "Réservation";
+        TextView textView = findViewById(R.id.textHeader);
+        textView.setText(txt);
 
         findViewById( R.id.btn_add_post ).setOnClickListener(
                 click -> {
