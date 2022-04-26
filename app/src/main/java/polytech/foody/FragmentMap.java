@@ -1,13 +1,21 @@
 package polytech.foody;
 
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A styled map using JSON styles from a raw resource.
@@ -30,9 +39,17 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     private GoogleMap googleMap;
     private Restaurant restaurant;
+    private IGPSActivity igpsActivity;
+    private Location currentLocation;
 
-    public FragmentMap () {
+    public FragmentMap(){}
 
+    public FragmentMap (IGPSActivity activity) {
+        igpsActivity = activity;
+    }
+
+    public FragmentMap (Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -47,6 +64,30 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
         mapView.getMapAsync(this);
 
+        boolean permissionGranted = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        if (permissionGranted){
+            LocationListener listener = new LocationListener() {
+                @Override
+                public void onLocationChanged(@NonNull Location location) {
+                    currentLocation = location;
+                    igpsActivity.moveCamera();
+                }
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras){
+
+                }
+                @Override
+                public void onProviderEnabled(String provider){
+
+                }
+                @Override
+                public void onProviderDisabled(String provider){
+
+                }
+            };
+            LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
+            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, listener);
+        }
         return rootView;
     }
 
@@ -60,7 +101,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
         MapsInitializer.initialize(this.getActivity());
 
-        String address = restaurant.address;
+        String address = "Nice";//restaurant.address;
 
         Geocoder geocoder = new Geocoder(getActivity());
         List<Address> RestaurantLocations = null;
@@ -77,11 +118,22 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
                 .position(restaurantMarker)
                 .title("Restaurant Location"));
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(restaurantMarker));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(restaurantMarker, 15f));
 
     }
 
+    LatLng getPosition(){
+        return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+    }
 
+    String getPlaceName() throws IOException{
+        Geocoder geocoder = new Geocoder( getContext(), Locale.getDefault());
+        List<Address> addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+        return addresses.get(0).getLocality();
+    }
 
+    void setPlaceName(String placeName){
+        //TODO
+    }
 
 }

@@ -38,5 +38,13 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
                 });
+        });
+
+        findViewById( R.id.btn_search ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    startActivity(intent);
+
+                });
     }
 }
