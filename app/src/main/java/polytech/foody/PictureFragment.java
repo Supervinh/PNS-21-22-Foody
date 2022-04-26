@@ -23,6 +23,7 @@ public class PictureFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_picture, container, false);
 
         imageView = rootView.findViewById(R.id.photoView);

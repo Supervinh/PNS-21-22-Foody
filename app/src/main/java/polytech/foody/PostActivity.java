@@ -2,6 +2,7 @@ package polytech.foody;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
