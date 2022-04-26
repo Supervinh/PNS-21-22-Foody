@@ -5,19 +5,16 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements IPictureActivity {
 
     public static final String CHANNEL1_ID = "channel low";
+    public static final String CHANNEL2_ID = "channel default";
     private static NotificationManager notificationManager;
 
     @Override
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
 
                 });
 
-        findViewById( R.id.btn_back ).setOnClickListener(
+        findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), GpsTest.class);
                     startActivity(intent);

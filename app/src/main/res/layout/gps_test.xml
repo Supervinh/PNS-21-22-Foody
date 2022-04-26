@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="et_status"
+        android:text=""
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="166dp" />
@@ -29,7 +29,7 @@
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="status"
+        android:text=""
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="53dp" />
