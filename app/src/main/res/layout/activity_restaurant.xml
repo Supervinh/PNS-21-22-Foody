@@ -16,13 +16,21 @@
         android:layout_height="0dp"
         android:layout_weight="15"
         tools:context=".RestaurantActivity"
-        />
+        >
+
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/restaurantLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
+    <Button
+        android:id="@+id/buttonReservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reserver" />
 
 
     <include layout="@layout/footer"/>
