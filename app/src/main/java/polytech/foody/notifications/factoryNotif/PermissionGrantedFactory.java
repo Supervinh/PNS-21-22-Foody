@@ -2,6 +2,7 @@ package polytech.foody.notifications.factoryNotif;
 
 import android.content.Context;
 
+import polytech.foody.GpsTest;
 import polytech.foody.notifications.PermissionGranted;
 import polytech.foody.notifications.PermissionNotGranted;
 

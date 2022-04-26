@@ -3,7 +3,6 @@ package polytech.foody.notifications;
 import static polytech.foody.MainActivity.CHANNEL1_ID;
 import static polytech.foody.MainActivity.CHANNEL2_ID;
 
-import android.app.NotificationManager;
 import android.content.Context;
 
 import androidx.core.app.NotificationCompat;
@@ -12,7 +11,6 @@ import androidx.core.app.NotificationManagerCompat;
 import polytech.foody.R;
 
 public abstract class Notifications {
-    private static NotificationManager notificationManager;
     protected static int notificationId = 0;
     protected Context context;
     protected String channelId;
