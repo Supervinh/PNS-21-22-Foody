@@ -64,21 +64,15 @@ public class FragmentRestaurant extends Fragment {
         });
 
         Button reservation = rootView.findViewById(R.id.reservation);
-        reservation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                makeReservation(restaurant);
-            }
-        });
+        reservation.setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getContext(), ReservationActivity.class);
+                    startActivity(intent);
+                });
 
         return rootView;
     }
 
-    private void makeReservation(Restaurant restaurant) {
-        Intent intent = new Intent( getParentFragment().getContext(), Reservation.class);
-        //intent.putExtra("Restaurant",restaurant);
-        startActivity(intent);
-    }
 
     private void LeaveComment(Restaurant restaurant) {
     }

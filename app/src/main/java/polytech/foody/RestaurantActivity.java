@@ -28,8 +28,8 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         setContentView(R.layout.activity_restaurant);
         Restaurants restaurants = Restaurants.getInstance();
 
-        Intent intent = getIntent();
-        restaurant = restaurants.get(intent.getIntExtra("Pos", 0));
+        Intent intentRestaurant = getIntent();
+        restaurant = restaurants.get(intentRestaurant.getIntExtra("Pos", 0));
 
         String txt = restaurant.name;
         TextView textView = findViewById(R.id.textHeader);
@@ -54,12 +54,7 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
         //Fragment restaurantFrag = new FragmentRestaurant();
         //getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
-        findViewById(R.id.buttonReservation).setOnClickListener(
-                click -> {
-                    Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
-                    startActivity(intent);
 
-                });
 
 
         findViewById(R.id.btn_add_post).setOnClickListener(
