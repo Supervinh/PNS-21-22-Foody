@@ -9,4 +9,10 @@
     <string name="nutripoints">NutriPoints: </string>
     <string name="restaurant_name">Restaurant Name</string>
     <string name="RESTAURANT">restaurant</string>
+    <string name="nom_de_la_reservation">Nom de la réservation:</string>
+    <string name="nombre_de_personnes">Nombre de personnes:</string>
+    <string name="date_et_heure_de_la_reservation">Date et heure de la réservation:</string>
+    <string name="commentaires">Commentaires:</string>
+    <string name="nom_du_restaurant">Nom du restaurant</string>
+    <string name="reserver">Réserver</string>
 </resources>

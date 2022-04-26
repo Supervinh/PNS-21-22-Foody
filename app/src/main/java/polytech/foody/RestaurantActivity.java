@@ -1,5 +1,6 @@
 package polytech.foody;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.LinearLayout;
@@ -43,7 +44,12 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
 
         //Fragment restaurantFrag = new FragmentRestaurant();
         //getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
+        findViewById(R.id.buttonReservation).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
+                    startActivity(intent);
 
+                });
     }
 
     @Override
