@@ -101,7 +101,7 @@
             android:layout_height="35dp"
             android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="15dp"
-            android:background="@drawable/back" />
+            android:background="@drawable/star" />
 
         <ImageButton
             android:id="@+id/comment"
@@ -109,7 +109,7 @@
             android:layout_height="35dp"
             android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="15dp"
-            android:background="@drawable/back" />
+            android:background="@drawable/comment" />
 
         <Button
             android:id="@+id/reservation"

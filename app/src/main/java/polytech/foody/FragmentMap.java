@@ -44,9 +44,9 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
     public FragmentMap(){}
 
-    public FragmentMap (IGPSActivity activity) {
-        igpsActivity = activity;
-    }
+    //public FragmentMap (IGPSActivity activity) {
+       // igpsActivity = activity;
+    //}
 
     public FragmentMap (Restaurant restaurant) {
         this.restaurant = restaurant;
@@ -56,7 +56,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
-        mapView =rootView.findViewById(R.id.mapView);
+        mapView = rootView.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 
 
@@ -101,7 +101,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
         MapsInitializer.initialize(this.getActivity());
 
-        String address = "Nice";//restaurant.address;
+        String address = restaurant.address;
 
         Geocoder geocoder = new Geocoder(getActivity());
         List<Address> RestaurantLocations = null;
@@ -116,8 +116,8 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
         LatLng restaurantMarker = new LatLng(restaurantLocation.getLatitude(), restaurantLocation.getLongitude());
         googleMap.addMarker(new MarkerOptions()
                 .position(restaurantMarker)
-                .title("Restaurant Location"));
-
+                .title(restaurant.name)
+                .visible(true));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(restaurantMarker, 15f));
 
     }
