@@ -33,7 +33,7 @@
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/notifications.xml" value="0.1625" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/opinions.xml" value="0.1625" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/post.xml" value="0.3453237504842127" />
-        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/reservation.xml" value="0.17266187524210636" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/reservation.xml" value="0.2279136753195804" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/toolbar.xml" value="0.2279136753195804" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/user_profile.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5109375" />
@@ -48,19 +48,10 @@
         <entry key="app/src/main/res/layout/restaurant.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/search.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/user_profile.xml" value="0.5109375" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17655487060546882" />
-        <entry key="app/src/main/res/layout/activity_post.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/comments.xml" value="0.23736572265625006" />
-        <entry key="app/src/main/res/layout/footer.xml" value="0.4960212201591512" />
-        <entry key="app/src/main/res/layout/my_profile.xml" value="0.19748535156249988" />
-        <entry key="app/src/main/res/layout/notifications.xml" value="0.2546875" />
-        <entry key="app/src/main/res/layout/post.xml" value="0.3094568259117939" />
-        <entry key="app/src/main/res/layout/restaurant.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

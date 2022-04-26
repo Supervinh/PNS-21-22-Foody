@@ -28,8 +28,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="54dp"
             android:layout_marginBottom="54dp"
-            app:layout_constraintBottom_toTopOf="@+id/mytoolbar"
-            app:layout_constraintTop_toBottomOf="@layout/footer"
+            app:layout_constraintBottom_toTopOf="@layout/footer"
+            app:layout_constraintTop_toBottomOf="@+id/mytoolbar"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="2dp">
 
@@ -39,14 +39,14 @@
 
                 <TextView
                     android:id="@+id/textViewRestaurant"
-                    android:layout_width="354dp"
+                    android:layout_width="match_parent"
                     android:layout_height="27dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/nom_du_restaurant"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewNom"
@@ -64,6 +64,7 @@
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:autofillHints=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
@@ -150,6 +151,8 @@
                     android:text="@string/reserver"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputCommentaires"
                     app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
