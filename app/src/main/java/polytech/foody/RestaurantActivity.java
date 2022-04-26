@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,13 +20,20 @@ import com.google.android.gms.maps.SupportMapFragment;
 public class RestaurantActivity extends FragmentActivity implements IGPSActivity, OnMapReadyCallback {
     private FragmentMap gpsFragment;
     private GoogleMap mMap;
+    private Restaurant restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
+        Restaurants restaurants = Restaurants.getInstance();
 
-        //Restaurant restaurant = Restaurants.get(0);
+        Intent intent = getIntent();
+        restaurant = restaurants.get(intent.getIntExtra("Pos", 0));
+
+        String txt = restaurant.name;
+        TextView textView = findViewById(R.id.textHeader);
+        textView.setText(txt);
 
        /* SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         assert mapFragment != null;
@@ -39,9 +47,11 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
             gpsTransaction.addToBackStack(null);
             gpsTransaction.commit();
         }*/
-        FragmentMap mapFrag = new FragmentMap();
+        FragmentMap mapFrag = new FragmentMap(restaurant);
         getSupportFragmentManager().beginTransaction().replace(R.id.map, mapFrag).commit();
 
+        Fragment restaurantFrag = new FragmentRestaurant(restaurant);
+        getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
         //Fragment restaurantFrag = new FragmentRestaurant();
         //getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
         findViewById(R.id.buttonReservation).setOnClickListener(

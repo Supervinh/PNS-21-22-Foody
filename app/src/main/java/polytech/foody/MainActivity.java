@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
 
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
                 });

@@ -21,22 +21,28 @@ public class FragmentRestaurant extends Fragment {
 
     }
 
+    public FragmentRestaurant(Restaurant restaurant) {
+        this.restaurant=restaurant;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         rootView = inflater.inflate(R.layout.fragment_restaurant, container, false);
 
+        TextView restaurantName = rootView.findViewById(R.id.restaurantName);
+        restaurantName.setText(restaurant.name);
 
         ImageView picture = rootView.findViewById(R.id.restaurantPicture);
         picture.setImageResource(restaurant.image);
 
         TextView nutriPoints = rootView.findViewById(R.id.restaurantNutriPoints);
-        nutriPoints.setText(restaurant.nutriPoints);
+        nutriPoints.setText(String.valueOf(restaurant.nutriPoints));
 
         TextView score = rootView.findViewById(R.id.restaurantScore);
         score.setText(String.valueOf(restaurant.score));
 
         TextView visitors = rootView.findViewById(R.id.restaurantVisitors);
-        visitors.setText(restaurant.visitors);
+        visitors.setText(String.valueOf(restaurant.visitors));
 
         TextView description = rootView.findViewById(R.id.restaurantDescription);
         description.setText(restaurant.description);
@@ -70,7 +76,7 @@ public class FragmentRestaurant extends Fragment {
 
     private void makeReservation(Restaurant restaurant) {
         Intent intent = new Intent( getParentFragment().getContext(), Reservation.class);
-        //intent.putExtra(restaurant);
+        //intent.putExtra("Restaurant",restaurant);
         startActivity(intent);
     }
 
