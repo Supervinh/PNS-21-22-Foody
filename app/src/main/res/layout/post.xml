@@ -35,26 +35,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="354dp"
-                    android:layout_height="248dp"
-                    android:layout_marginTop="32dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.491"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
+                <FrameLayout
+                    android:id="@+id/fragmentPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="0dp" />
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="354dp"
                     android:layout_height="27dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="17dp"
                     android:text="Entre le nom du restaurant:"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragmentPicture" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"

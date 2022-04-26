@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="410dp"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF2E2"
-    android:orientation="vertical"
     android:gravity="center"
     tools:context=".PictureFragment">
 
 
-    <TextView
-        android:id="@+id/labeInfo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Take a picture!"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/photoView"
-        android:layout_width="match_parent"
-        android:layout_height="543dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="50"
-        android:src="@drawable/picture" />
-
+        <ImageView
+            android:id="@+id/photoView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Capture Image"
         style="?android:attr/buttonStyleSmall"
-        android:layout_marginTop="30dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/photoView"
+        android:layout_margin="2dp"
+        android:text="Prendre une photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+    </RelativeLayout>
