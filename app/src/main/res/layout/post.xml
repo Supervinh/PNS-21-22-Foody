@@ -51,21 +51,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragmentPicture" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputLayout"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:minHeight="48dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.508"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nom restaurant" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -78,7 +73,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputLayout2"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
@@ -86,14 +81,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:hint="Description" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <Button
                     android:id="@+id/buttonAnnuler"

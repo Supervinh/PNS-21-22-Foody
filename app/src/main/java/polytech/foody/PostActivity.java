@@ -1,5 +1,7 @@
 package polytech.foody;
 
+import static polytech.foody.MainActivity.CHANNEL1_ID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
@@ -7,9 +9,13 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 public class PostActivity extends AppCompatActivity implements IPictureActivity {
@@ -57,6 +63,13 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
                 });
+
+        findViewById(R.id.buttonPost).setOnClickListener(click -> {
+            //recupere le titre
+            String title = ((EditText)findViewById(R.id.textInputLayout)).getText().toString();
+            String message = ((EditText)findViewById(R.id.textInputLayout2)).getText().toString();
+            sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
+        });
     }
 
     /**
@@ -82,6 +95,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             }
             break;
         }
+
     }
 
     /**
@@ -106,5 +120,19 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             }
         }
 
+    }
+
+    private int notificationId = 0;
+
+    private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId)
+                .setSmallIcon(R.drawable.uploadpicture)
+                .setContentTitle("Vous venez de poster une photo de " + title)
+                .setContentText("avec le message: " + message)
+                .setPriority(priority);
+        switch (channelId){
+            case CHANNEL1_ID: notification.setSmallIcon(R.drawable.uploadpicture); break;
+        }
+        NotificationManagerCompat.from(this).notify(notificationId, notification.build());
     }
 }
