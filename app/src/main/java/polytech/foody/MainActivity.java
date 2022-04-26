@@ -25,7 +25,19 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
             click -> {
                 Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                 startActivity(intent);
+        });
 
+        findViewById( R.id.btn_home ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById( R.id.btn_profile ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    startActivity(intent);
+                });
         });
 
         findViewById( R.id.btn_search ).setOnClickListener(
