@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        tools:context=".MainActivity"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="47dp">
 
@@ -58,7 +59,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewRestaurant" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputNom"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
@@ -68,13 +69,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewNom">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nom_de_la_reservation"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                </EditText>
 
                 <TextView
                     android:id="@+id/textViewNombre"
@@ -87,7 +82,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputNom" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputNombre"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
@@ -97,12 +92,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewNombre">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:hint="@string/nombre_de_personnes" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                </EditText>
 
                 <TextView
                     android:id="@+id/textViewDate"
@@ -115,7 +105,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputNombre" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputDate"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
@@ -125,12 +115,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDate">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:hint="@string/date_et_heure_de_la_reservation" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                </EditText>
 
                 <TextView
                     android:id="@+id/textViewCommentaires"
@@ -143,7 +128,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputDate" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/textInputCommentaires"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
@@ -153,12 +138,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCommentaires">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:hint="@string/commentaires" />
+                </EditText>
 
-                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/buttonReserver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/reserver"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputCommentaires"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </RelativeLayout>
