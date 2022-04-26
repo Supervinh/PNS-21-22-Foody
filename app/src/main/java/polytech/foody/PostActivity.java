@@ -46,22 +46,37 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             transaction.commit();
         }
 
-        findViewById( R.id.btn_add_post ).setOnClickListener(
+
+        findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                     startActivity(intent);
                 });
 
-        findViewById( R.id.btn_home ).setOnClickListener(
+        findViewById(R.id.btn_home).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 });
 
-        findViewById( R.id.btn_profile ).setOnClickListener(
+        findViewById(R.id.btn_profile).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
+                });
+
+        findViewById(R.id.btn_search).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    startActivity(intent);
+
+                });
+
+        findViewById( R.id.btn_back ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    startActivity(intent);
+
                 });
 
         findViewById(R.id.buttonPost).setOnClickListener(click -> {

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -57,6 +58,8 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
             }
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
         }
+
+
     }
 
     @Override
@@ -65,6 +68,7 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
         Log.d("status", Arrays.toString(grantResults));
         if (grantResults.length!=0){
             if(grantResults[0] == 0)Toast.makeText(GpsTest.this, "Permission GPS accordée", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(GpsTest.this, "Permission GPS non accordée", Toast.LENGTH_SHORT).show();
         }
     }
 

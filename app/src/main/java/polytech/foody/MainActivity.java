@@ -49,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
                 });
 
         findViewById(R.id.btn_search).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    startActivity(intent);
+
+                });
+
         findViewById( R.id.btn_back ).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), GpsTest.class);
