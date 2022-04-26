@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
         textView.setText(txt);
 
 
-        findViewById( R.id.post ).setOnClickListener(new View.OnClickListener() {
+        findViewById( R.id.btn_add_post ).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Post.class);
+                Intent intent = new Intent(MainActivity.this, PostActivity.class);
                 startActivity(intent);
             }
         });

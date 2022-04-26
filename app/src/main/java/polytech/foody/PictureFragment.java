@@ -25,7 +25,7 @@ public class PictureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_picture, container, false);
 
-        imageView = rootView.findViewById(R.id.imageView);
+        imageView = rootView.findViewById(R.id.photoView);
 
         rootView.findViewById(R.id.buttonImage).setOnClickListener(new View.OnClickListener() {
             @Override
