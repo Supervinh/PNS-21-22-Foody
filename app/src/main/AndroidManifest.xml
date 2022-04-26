@@ -3,8 +3,12 @@
     package="polytech.foody">
 
     <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.location" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity
+            android:name=".GpsTest"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDlCDGbAs664ZqlLW9Q-Pj0pT1aMynvrV8"/>
+            android:value="AIzaSyDlCDGbAs664ZqlLW9Q-Pj0pT1aMynvrV8" />
 
         <activity
             android:name=".UserProfile"
