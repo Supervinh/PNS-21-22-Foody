@@ -1,25 +1,36 @@
 package polytech.foody;
 
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
 
 public class UserProfile extends AppCompatActivity {
-    boolean abonne;
 
-    public UserProfile(boolean abonne){
-        this.abonne = abonne;
-    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.user_profile);
 
-    public void afficherInformations(User autreUtilisateur){
-        //peut être avec intent ?
-        TextView nomUtilisateur = findViewById(R.id.nomAutreUtilisateur);
-        nomUtilisateur.setText(autreUtilisateur.firstName+autreUtilisateur.lastName);
-        TextView nbRestos = findViewById(R.id.nbRestosAutre);
-        nbRestos.setText("Nombre de restaurants visités : " + autreUtilisateur.nbRestosVisites);
-        TextView pointsUtilisateur = findViewById(R.id.pointsAutreUtilisateur);
-        pointsUtilisateur.setText("Nutripoints : " + autreUtilisateur.nutriPoints);
+
+        findViewById( R.id.btn_add_post ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById( R.id.btn_home ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById( R.id.btn_profile ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    startActivity(intent);
+                });
     }
 
 }

@@ -70,7 +70,7 @@ public class FragmentRestaurant extends Fragment {
 
     private void makeReservation(Restaurant restaurant) {
         Intent intent = new Intent( getParentFragment().getContext(), Reservation.class);
-        intent.putExtra(restaurant);
+        //intent.putExtra(restaurant);
         startActivity(intent);
     }
 
