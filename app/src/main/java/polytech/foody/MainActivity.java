@@ -67,12 +67,13 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
         //for API 26+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //verifie API26+
             NotificationChannel channel1 = new NotificationChannel(CHANNEL1_ID, "channel 1", NotificationManager.IMPORTANCE_LOW);
-
+            NotificationChannel channel2 = new NotificationChannel(CHANNEL2_ID, "channel 2", NotificationManager.IMPORTANCE_DEFAULT);
             channel1.setDescription("Channel has low priority");
-
+            channel2.setDescription("Channel has default priority");
             //cannot be changed after
             notificationManager = getSystemService(NotificationManager.class);
             Objects.requireNonNull(notificationManager).createNotificationChannel(channel1);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel2);
 
         }
     }

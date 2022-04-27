@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 
+import polytech.foody.notifications.Notifications;
 import polytech.foody.notifications.PermissionGranted;
 import polytech.foody.notifications.PermissionNotGranted;
 import polytech.foody.notifications.factoryNotif.AbstractFactoryNotif;
@@ -75,16 +76,16 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
         if (grantResults.length!=0){
             if(grantResults[0] == 0){
                 Toast.makeText(GpsTest.this, "Permission GPS accordée", Toast.LENGTH_SHORT).show();
-                PermissionGranted notification;
+                Notifications notification;
                 AbstractFactoryNotif factory = new PermissionGrantedFactory();
                 notification = factory.buildGranted(GpsTest.this, "Permission accordée");
                 notification.sendNotificationOnChannel();
             }
             else {
                 Toast.makeText(GpsTest.this, "Permission GPS non accordée", Toast.LENGTH_SHORT).show();
-                PermissionGranted notification;
-                AbstractFactoryNotif factory = new PermissionGrantedFactory();
-                notification = factory.buildGranted(GpsTest.this, "Permission non accordée");
+                Notifications notification;
+                AbstractFactoryNotif factory = new PermissionNotGrantedFactory();
+                notification = factory.buildNotGranted(GpsTest.this, "Permission non accordée");
                 notification.sendNotificationOnChannel();
             }
         }
