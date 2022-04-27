@@ -71,15 +71,19 @@
     </LinearLayout>
 
 
-
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
         <TextView
             android:id="@+id/restaurantDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/description"
-            android:layout_margin="20dp"/>
-
+            android:layout_margin="15dp"
+            />
+    </ScrollView>
 
 
 

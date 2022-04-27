@@ -14,18 +14,16 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="0.2"
         tools:context=".RestaurantActivity"
-        >
-
-    </FrameLayout>
+        />
 
     <FrameLayout
         android:id="@+id/restaurantLocation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
         />
-
 
 
     <include layout="@layout/footer"/>
