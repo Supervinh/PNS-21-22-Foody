@@ -36,13 +36,16 @@ public class FragmentRestaurant extends Fragment {
         picture.setImageResource(restaurant.image);
 
         TextView nutriPoints = rootView.findViewById(R.id.restaurantNutriPoints);
-        nutriPoints.setText(String.valueOf(restaurant.nutriPoints));
+        String nutriPointsString = "NutriPoints : " + restaurant.nutriPoints;
+        nutriPoints.setText(nutriPointsString);
 
         TextView score = rootView.findViewById(R.id.restaurantScore);
-        score.setText(String.valueOf(restaurant.score));
+        String scoreString = "Score : " + restaurant.score;
+        score.setText(scoreString);
 
         TextView visitors = rootView.findViewById(R.id.restaurantVisitors);
-        visitors.setText(String.valueOf(restaurant.visitors));
+        String visitorsString = "Nombre de visiteurs : " + restaurant.visitors;
+        visitors.setText(visitorsString);
 
         TextView description = rootView.findViewById(R.id.restaurantDescription);
         description.setText(restaurant.description);
@@ -56,12 +59,10 @@ public class FragmentRestaurant extends Fragment {
         });
 
         ImageView comment = rootView.findViewById(R.id.comment);
-        comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LeaveComment(restaurant);
-            }
-        });
+        comment.setOnClickListener(click -> {
+            Intent intent = new Intent(getContext(), ReviewCreationActivity.class);
+            startActivity(intent);
+            });
 
         Button reservation = rootView.findViewById(R.id.reservation);
         reservation.setOnClickListener(

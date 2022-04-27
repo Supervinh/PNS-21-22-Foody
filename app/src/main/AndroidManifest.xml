@@ -40,6 +40,8 @@
         <activity
             android:name=".ReservationActivity"
             android:exported="false" />
+        <activity android:name=".ReviewCreationActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

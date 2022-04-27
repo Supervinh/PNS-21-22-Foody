@@ -39,9 +39,13 @@
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/toolbar.xml" value="0.2279136753195804" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/user_profile.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5109375" />
+        <entry key="app/src/main/res/layout/activity_restaurant.xml" value="0.24365942028985507" />
+        <entry key="app/src/main/res/layout/activity_review_creation.xml" value="0.46195652173913043" />
         <entry key="app/src/main/res/layout/comments.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/feed.xml" value="0.2765060424804688" />
         <entry key="app/src/main/res/layout/footer.xml" value="0.2595281306715064" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.24365942028985507" />
+        <entry key="app/src/main/res/layout/fragment_restaurant.xml" value="0.24365942028985507" />
         <entry key="app/src/main/res/layout/my_profile.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/notifications.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/opinions.xml" value="0.5109375" />
