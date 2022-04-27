@@ -88,6 +88,7 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
                     startActivity(intent);
 
                 });
+
     }
 
     @Override
