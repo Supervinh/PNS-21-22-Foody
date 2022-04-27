@@ -64,5 +64,12 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 });
+
+        findViewById(R.id.btn_back).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    startActivity(intent);
+
+                });
     }
 }

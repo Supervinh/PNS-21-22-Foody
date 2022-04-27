@@ -33,7 +33,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post);
 
-        String txt = "Foody";
+        String txt = "Post";
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
 
@@ -67,12 +67,12 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
 
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
                 });
 
-        findViewById( R.id.btn_back ).setOnClickListener(
+        findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), GpsTest.class);
                     startActivity(intent);

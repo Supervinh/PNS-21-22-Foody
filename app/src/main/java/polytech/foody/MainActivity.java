@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements IPictureActivity {
+public class MainActivity extends AppCompatActivity {
 
     public static final String CHANNEL1_ID = "channel low";
     public static final String CHANNEL2_ID = "channel default";
@@ -21,11 +21,6 @@ public class MainActivity extends AppCompatActivity implements IPictureActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        String txt = "Foody";
-        TextView textView = findViewById(R.id.textHeader);
-        //textView.setText(txt);
-
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {

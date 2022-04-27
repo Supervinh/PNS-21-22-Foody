@@ -13,6 +13,9 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_profile);
 
+        String txt = "Profil";
+        TextView textView = findViewById(R.id.textHeader);
+        textView.setText(txt);
 
 
         findViewById(R.id.btn_add_post).setOnClickListener(
@@ -35,12 +38,12 @@ public class UserProfile extends AppCompatActivity {
 
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
                 });
 
-        findViewById( R.id.btn_back ).setOnClickListener(
+        findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), GpsTest.class);
                     startActivity(intent);
