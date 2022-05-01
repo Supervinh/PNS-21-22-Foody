@@ -21,7 +21,16 @@ public class Restaurant {
         this.address = address;
     }
 
-
+    public Restaurant(String name, String description, int image, String address, int nutriPoints, int visitors, double score, int nombreDeNotes) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.address = address;
+        this.nutriPoints = nutriPoints;
+        this.visitors = visitors;
+        this.score = score;
+        this.nombreDeNotes = nombreDeNotes;
+    }
 
     public void ajouterScore(int note) {
         this.score *= this.nombreDeNotes;

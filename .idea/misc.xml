@@ -34,31 +34,27 @@
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/notifications.xml" value="0.1625" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/opinions.xml" value="0.2279136753195804" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/post.xml" value="0.2279136753195804" />
-        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/reservation.xml" value="0.2279136753195804" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/reservation.xml" value="0.25" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/restaurant_layout.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/toolbar.xml" value="0.2279136753195804" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/user_profile.xml" value="0.1625" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/webservice.xml" value="0.1390625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5109375" />
-        <entry key="app/src/main/res/layout/activity_restaurant.xml" value="0.24365942028985507" />
-        <entry key="app/src/main/res/layout/activity_review_creation.xml" value="0.46195652173913043" />
         <entry key="app/src/main/res/layout/comments.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/feed.xml" value="0.2765060424804688" />
         <entry key="app/src/main/res/layout/footer.xml" value="0.2595281306715064" />
-        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.24365942028985507" />
-        <entry key="app/src/main/res/layout/fragment_restaurant.xml" value="0.24365942028985507" />
         <entry key="app/src/main/res/layout/my_profile.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/notifications.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/opinions.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/post.xml" value="0.5109375" />
-        <entry key="app/src/main/res/layout/reservation.xml" value="0.22716064453124996" />
+        <entry key="app/src/main/res/layout/reservation.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/restaurant.xml" value="0.5109375" />
-        <entry key="app/src/main/res/layout/restaurant_layout.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/layout/search.xml" value="0.5109375" />
         <entry key="app/src/main/res/layout/user_profile.xml" value="0.5109375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

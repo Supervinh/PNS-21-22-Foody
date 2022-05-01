@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    Intent intent = new Intent(getApplicationContext(), WebService.class);
                     startActivity(intent);
 
                 });
