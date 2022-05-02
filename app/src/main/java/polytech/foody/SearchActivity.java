@@ -51,6 +51,38 @@ public class SearchActivity extends AppCompatActivity {
         restaurants.getList().clear();
             //Call WebService
         new GetServerData().execute();
+
+        findViewById(R.id.btn_add_post).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.btn_home).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.btn_profile).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.btn_search).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    startActivity(intent);
+
+                });
+
+        findViewById(R.id.btn_back).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    startActivity(intent);
+
+                });
     }
 
     // In case if you deploy rest web service, then use below link and replace below ip address with yours
@@ -154,4 +186,6 @@ public class SearchActivity extends AppCompatActivity {
         }
         return null;
     }
+
+
 }
