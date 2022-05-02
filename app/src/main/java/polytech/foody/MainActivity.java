@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), WebService.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
                 });

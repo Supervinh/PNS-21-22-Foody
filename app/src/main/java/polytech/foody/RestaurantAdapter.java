@@ -1,5 +1,6 @@
 package polytech.foody;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +9,17 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class RestaurantAdapter extends BaseAdapter {
 
     private Restaurants listRestaurant;
-    private Context context;
+    private Activity context;
     private LayoutInflater inflater;
 
-    public RestaurantAdapter (Context context, Restaurants listS){
+    public RestaurantAdapter (Activity context, Restaurants listS){
         this.context=context;
-        this.listRestaurant =listS;
+        this.listRestaurant = listS;
         inflater=LayoutInflater.from(this.context);
     }
 
