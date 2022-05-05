@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -46,7 +45,6 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         activity = this;
-        Button btnSubmit = (Button) findViewById(R.id.buttonWebService);
         listView = (ListView) findViewById(R.id.listView);
         restaurants.getList().clear();
             //Call WebService
@@ -96,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
             super.onPreExecute();
             // Showing progress dialog
             progressDialog = new ProgressDialog(SearchActivity.this);
-            progressDialog.setMessage("Fetching conntry data");
+            progressDialog.setMessage("Fetching restaurants data");
             progressDialog.setCancelable(false);
             progressDialog.show();
 

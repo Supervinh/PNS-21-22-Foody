@@ -15,16 +15,6 @@
         android:layout_weight="80">
     </ListView>
 
-    <Button
-        android:id="@+id/buttonWebService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="309dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="171dp" />
-
     <include layout="@layout/footer"/>
 
 </LinearLayout>
