@@ -46,7 +46,6 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         activity = this;
         listView = (ListView) findViewById(R.id.listView);
-        restaurants.getList().clear();
             //Call WebService
         new GetServerData().execute();
 
@@ -102,26 +101,32 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] objects) {
-            return getWebServiceResponseData();
+            getWebServiceResponseData();
+            return restaurants;
         }
 
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-
             // Dismiss the progress dialog
             if (progressDialog.isShowing())
                 progressDialog.dismiss();
-            // For populating list data
             RestaurantAdapter restaurantAdapter = new RestaurantAdapter(activity, restaurants);
             listView.setAdapter(restaurantAdapter);
-
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                     Toast.makeText(activity.getApplicationContext(),"You Selected "+restaurants.get(position).getName()+ " as Restaurant",Toast.LENGTH_SHORT).show();
                     final Intent launchActivity = new Intent(SearchActivity.this, RestaurantActivity.class);
-                    launchActivity.putExtra("Pos", position);
+                    launchActivity.putExtra("name", restaurants.get(position).getName());
+                    launchActivity.putExtra("description", restaurants.get(position).getDescription());
+                    launchActivity.putExtra( "image", restaurants.get(position).getImage());
+                    launchActivity.putExtra("address", restaurants.get(position).getAddress());
+                    launchActivity.putExtra("nutriPoints", restaurants.get(position).getNutriPoints());
+                    launchActivity.putExtra("visitors", restaurants.get(position).getVisitors());
+                    launchActivity.putExtra("score", restaurants.get(position).getScore());
+                    launchActivity.putExtra("nombreDeNotes", restaurants.get(position).getNombreDeNotes());
+                    System.out.println(position);
                     startActivity(launchActivity);
                     }
             });
