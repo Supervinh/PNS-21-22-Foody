@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,12 +19,11 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-public class PostActivity extends AppCompatActivity implements IPictureActivity {
-
+public class PostActivity extends AppCompatActivity implements IPictureActivity, IStorageActivity {
 
     private Bitmap picture;
     private PictureFragment pictureFragment;
-
+    private StorageFragment storageFragment;
 
     public PostActivity(){
     }
@@ -42,6 +42,15 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             pictureFragment = new PictureFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragmentPicture, pictureFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
+        storageFragment = (StorageFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentStorage);
+        if (storageFragment == null) {
+            storageFragment = new StorageFragment(this);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentStorage, storageFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         }
@@ -100,11 +109,23 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
         switch (requestCode) {
             case REQUEST_CAMERA: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "CAMERA authorization granted", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Accès à la caméra autorisé", Toast.LENGTH_LONG);
                     toast.show();
                     pictureFragment.takePicture();
+                    storageFragment.setEnableSaveButton();
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "CAMERA authorization not granted", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Accès à la caméra NON autoriséd", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+            break;
+            case REQUEST_MEDIA_WRITE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    storageFragment.saveToInternalStorage(picture);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Accès au stockage autorisé", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Accès au stockage NON autorisé", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
@@ -126,6 +147,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             if (resultCode == RESULT_OK) {
                 picture = (Bitmap) data.getExtras().get("data");
                 pictureFragment.setImage(picture);
+                storageFragment.setEnableSaveButton();
             } else if (resultCode == RESULT_CANCELED) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Picture canceled", Toast.LENGTH_LONG);
                 toast.show();
@@ -149,5 +171,15 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity 
             case CHANNEL1_ID: notification.setSmallIcon(R.drawable.uploadpicture); break;
         }
         NotificationManagerCompat.from(this).notify(notificationId, notification.build());
+    }
+
+    @Override
+    public void onPictureLoad(Bitmap bitmap) {
+
+    }
+
+    @Override
+    public Bitmap getPictureToSave() {
+        return picture;
     }
 }
