@@ -7,6 +7,9 @@ public class Restaurants {
     private static Restaurants instance;
     List<Restaurant> list;
 
+    public Restaurants(List<Restaurant> list) {
+        this.list = list;
+    }
 
     public Restaurants(){
         list = new ArrayList<>();
@@ -27,6 +30,13 @@ public class Restaurants {
         list.add(score);
     }
 
+    public List<Restaurant> getList() {
+        return list;
+    }
+
+    public void setList(List<Restaurant> list) {
+        this.list = list;
+    }
 
     public static Restaurants getInstance(){
         if(Restaurants.instance == null){

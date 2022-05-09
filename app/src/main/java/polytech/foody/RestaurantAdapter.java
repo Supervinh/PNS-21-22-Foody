@@ -1,6 +1,6 @@
 package polytech.foody;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 public class RestaurantAdapter extends BaseAdapter {
 
-    private Restaurants listRestaurant;
-    private Context context;
-    private LayoutInflater inflater;
+    private final Restaurants listRestaurant;
+    private final LayoutInflater inflater;
+    private final Activity context;
 
-    public RestaurantAdapter (Context context, Restaurants listS){
-        this.context=context;
-        this.listRestaurant =listS;
-        inflater=LayoutInflater.from(this.context);
+    public RestaurantAdapter(Activity context, Restaurants listS){
+        this.listRestaurant = listS;
+        this.context = context;
+        inflater=LayoutInflater.from(context);
     }
 
     @Override
@@ -58,5 +60,6 @@ public class RestaurantAdapter extends BaseAdapter {
 
         //On retourne l'item créé.
         return layoutItem;
+
     }
 }
