@@ -20,17 +20,24 @@ import com.google.android.gms.maps.SupportMapFragment;
 public class RestaurantActivity extends FragmentActivity implements IGPSActivity, OnMapReadyCallback {
     private FragmentMap gpsFragment;
     private GoogleMap mMap;
-    private Restaurant restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
-        Restaurants restaurants = Restaurants.getInstance();
 
         Intent intentRestaurant = getIntent();
-        restaurant = restaurants.get(intentRestaurant.getIntExtra("Pos", 0));
+        String name = intentRestaurant.getStringExtra("name");
+        String description = intentRestaurant.getStringExtra("description");
+        int image = intentRestaurant.getIntExtra( "image", 0);
+        String adress = intentRestaurant.getStringExtra("address");
+        //adress = "235 chemin du Béal, 06480";
+        int nutriPoint = intentRestaurant.getIntExtra("nutriPoints", 10 );
+        int visitors = intentRestaurant.getIntExtra("visitors", 110);
+        double score = intentRestaurant.getDoubleExtra("score", 4.5);
+        int nombreDeNotes = intentRestaurant.getIntExtra("nombreDeNotes", 43);
 
+        Restaurant restaurant = new Restaurant(name, description, image, adress, nutriPoint, visitors, score, nombreDeNotes);
         String txt = restaurant.name;
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
@@ -55,8 +62,6 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         //Fragment restaurantFrag = new FragmentRestaurant();
         //getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
 
-
-
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), PostActivity.class);
@@ -77,7 +82,7 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
 
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
                 });
