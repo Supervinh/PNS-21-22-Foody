@@ -4,13 +4,10 @@ import static polytech.foody.MainActivity.CHANNEL1_ID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -156,6 +153,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
                 toast.show();
             }
         }
+
 
     }
 
