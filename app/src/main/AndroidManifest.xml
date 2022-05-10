@@ -40,6 +40,8 @@
         <activity
             android:name=".RestaurantActivity"
             android:exported="false" />
+        <activity android:name=".CommentCreationActivity"
+            android:exported="false"/>
         <activity
             android:name=".ReservationActivity"
             android:exported="false" />

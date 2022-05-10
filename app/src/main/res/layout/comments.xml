@@ -42,7 +42,7 @@
                     android:layout_marginTop="17dp"
                     android:text="Entrer un commentaire:"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <EditText
                     android:id="@+id/textInputLayout"

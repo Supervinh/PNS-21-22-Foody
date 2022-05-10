@@ -5,7 +5,7 @@
     <string name="description">Description</string>
     <string name="reserve">Reservation en ligne</string>
     <string name="visitors">visiteurs</string>
-    <string name="score">/20</string>
+    <string name="score">/5</string>
     <string name="nutripoints">NutriPoints: </string>
     <string name="restaurant_name">Restaurant Name</string>
     <string name="RESTAURANT">restaurant</string>

@@ -4,6 +4,7 @@ import static polytech.foody.MainActivity.CHANNEL1_ID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -95,7 +96,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
 
             postList.addPost(new Post(message, author, pictureFragment.getImage()));
 
-            sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
+            sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_HIGH);
         });
     }
 
@@ -167,12 +168,12 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
 
     private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId)
-                .setSmallIcon(R.drawable.uploadpicture)
+                .setSmallIcon(R.drawable.upload)
                 .setContentTitle("Vous venez de poster une photo de " + title)
                 .setContentText("avec le message: " + message)
                 .setPriority(priority);
         switch (channelId){
-            case CHANNEL1_ID: notification.setSmallIcon(R.drawable.uploadpicture); break;
+            case CHANNEL1_ID: notification.setSmallIcon(R.drawable.upload); break;
         }
         NotificationManagerCompat.from(this).notify(notificationId, notification.build());
     }

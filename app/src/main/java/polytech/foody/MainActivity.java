@@ -14,8 +14,9 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String CHANNEL1_ID = "channel low";
+    public static final String CHANNEL1_ID = "channel post";
     public static final String CHANNEL2_ID = "channel default";
+    public static final String CHANNEL3_ID = "channel reservation";
     private static NotificationManager notificationManager;
 
     @Override
@@ -52,6 +53,25 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
 
+        findViewById(R.id.imageView11).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.imageView8).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.imageView12).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), CommentCreationActivity.class);
+                    startActivity(intent);
+                });
+
+
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
@@ -73,14 +93,17 @@ public class MainActivity extends AppCompatActivity {
     private void createNotificationChannels() {
         //for API 26+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //verifie API26+
-            NotificationChannel channel1 = new NotificationChannel(CHANNEL1_ID, "channel 1", NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel channel1 = new NotificationChannel(CHANNEL1_ID, "channel 1", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationChannel channel2 = new NotificationChannel(CHANNEL2_ID, "channel 2", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel3 = new NotificationChannel(CHANNEL3_ID, "channel 3", NotificationManager.IMPORTANCE_DEFAULT);
+            channel1.setDescription("Channel for post");
             channel1.setDescription("Channel has low priority");
-            channel2.setDescription("Channel has default priority");
+            channel2.setDescription("Channel for reservation");
             //cannot be changed after
             notificationManager = getSystemService(NotificationManager.class);
             Objects.requireNonNull(notificationManager).createNotificationChannel(channel1);
             Objects.requireNonNull(notificationManager).createNotificationChannel(channel2);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel3);
 
         }
     }

@@ -6,15 +6,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ReviewCreationActivity extends AppCompatActivity {
+public class CommentCreationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review_creation);
+        setContentView(R.layout.comments);
 
-        String txt = "Avis";
+        String txt = "Comment";
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
 
@@ -36,7 +36,6 @@ public class ReviewCreationActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
                 });
-
 
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
