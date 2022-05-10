@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String txt = "Foody";
+        TextView textView = findViewById(R.id.textHeader);
+        //textView.setText(txt);
+
+        PostList listS = PostList.getInstance();
+
+        //RestaurantAdapter adapter = new RestaurantAdapter(this, listS);
+
+        ListView list = findViewById(R.id.listViewMain);
+
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {

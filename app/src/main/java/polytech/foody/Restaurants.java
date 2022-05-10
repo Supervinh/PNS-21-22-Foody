@@ -22,8 +22,8 @@ public class Restaurants {
         return list.get(pos);
     }
 
-    public void add(Restaurant score){
-        list.add(score);
+    public void add(Restaurant restaurant){
+        list.add(restaurant);
     }
 
     public List<Restaurant> getList() {

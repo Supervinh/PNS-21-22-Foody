@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 public class PictureFragment extends Fragment {
     private ImageView imageView;
+    private Bitmap currentImage = null;
 
     public PictureFragment() {
     }
@@ -52,5 +53,10 @@ public class PictureFragment extends Fragment {
 
     public void setImage(Bitmap bitmap){
         imageView.setImageBitmap(bitmap);
+        currentImage = bitmap;
+    }
+
+    public Bitmap getImage(){
+        return currentImage;
     }
 }

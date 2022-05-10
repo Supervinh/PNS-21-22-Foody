@@ -89,6 +89,12 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
             //recupere le titre
             String title = ((EditText)findViewById(R.id.textInputLayout)).getText().toString();
             String message = ((EditText)findViewById(R.id.textInputLayout2)).getText().toString();
+            //TODO : Récupérer l'utilisateur actuel
+            PostList postList = new PostList();
+            User author = postList.author;
+
+            postList.addPost(new Post(message, author, pictureFragment.getImage()));
+
             sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
         });
     }
