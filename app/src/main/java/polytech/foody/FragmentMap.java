@@ -1,6 +1,8 @@
 package polytech.foody;
 
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -108,10 +110,29 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
         try {
             RestaurantLocations = geocoder.getFromLocationName(address, 3);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Address tmp = RestaurantLocations.get(0);
+            Location tmpLocation = new Location("");
+            tmpLocation.setLatitude(RestaurantLocations.get(0).getLatitude());
+            tmpLocation.setLongitude( RestaurantLocations.get(0).getLongitude());
 
+            float distance = tmpLocation.distanceTo(currentLocation);
+
+            for (Address address1: RestaurantLocations){
+                Location location = new Location("");
+                location.setLatitude(address1.getLatitude());
+                location.setLongitude(address1.getLongitude());
+                if (location.distanceTo(currentLocation)< distance){
+                    distance = location.distanceTo(currentLocation);
+                    tmp = address1;
+                }
+            }
+            RestaurantLocations.set(0, tmp);
+        }
         Address restaurantLocation = RestaurantLocations.get(0);
         LatLng restaurantMarker = new LatLng(restaurantLocation.getLatitude(), restaurantLocation.getLongitude());
         googleMap.addMarker(new MarkerOptions()
