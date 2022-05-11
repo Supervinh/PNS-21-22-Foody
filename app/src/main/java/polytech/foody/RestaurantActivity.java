@@ -2,7 +2,9 @@ package polytech.foody;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +19,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import java.io.InputStream;
+import java.net.URL;
+
 public class RestaurantActivity extends FragmentActivity implements IGPSActivity, OnMapReadyCallback {
     private FragmentMap gpsFragment;
     private GoogleMap mMap;
@@ -30,8 +35,9 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         String name = intentRestaurant.getStringExtra("name");
         String description = intentRestaurant.getStringExtra("description");
         int image = intentRestaurant.getIntExtra( "image", 0);
+
         String adress = intentRestaurant.getStringExtra("address");
-        //adress = "235 chemin du Béal, 06480";
+        //adress = "1600 Amphitheatre Parkway, Mountain View, CA";
         int nutriPoint = intentRestaurant.getIntExtra("nutriPoints", 10 );
         int visitors = intentRestaurant.getIntExtra("visitors", 110);
         double score = intentRestaurant.getDoubleExtra("score", 4.5);

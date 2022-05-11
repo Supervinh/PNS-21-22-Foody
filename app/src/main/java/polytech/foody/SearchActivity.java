@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,9 @@ public class SearchActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
             //Call WebService
         new GetServerData().execute();
+
+        TextView textView = findViewById(R.id.textHeader);
+        textView.setText("Recherche");
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
