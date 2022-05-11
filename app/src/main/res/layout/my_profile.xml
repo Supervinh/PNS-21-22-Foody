@@ -45,7 +45,7 @@
                     android:layout_height="23dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
-                    android:text="Nom Prenom"
+                    android:text="Albert Falbert"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -56,7 +56,7 @@
                     android:layout_height="38dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
-                    android:text="Nombre de restaurants: "
+                    android:text="Nombre de restaurants: 5"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/nomUtilisateur"
                     tools:ignore="MissingConstraints" />
@@ -67,7 +67,7 @@
                     android:layout_height="18dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
-                    android:text="Nutipoints:"
+                    android:text="Nutipoints: 21"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/nbRestos"
                     tools:ignore="MissingConstraints" />
@@ -120,7 +120,7 @@
                             android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="72dp"
+                            android:layout_marginStart="56dp"
                             android:text="La Môme"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -131,22 +131,22 @@
                             android:id="@+id/textView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="72dp"
+                            android:layout_marginStart="92dp"
                             android:text="L'Axel"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView8"
                             app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                            app:layout_constraintVertical_bias="0.466"
                             tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginTop="11dp"
+                            android:layout_marginTop="12dp"
                             android:text="Le M Restaurant"
                             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                            />
+                            tools:layout_editor_absoluteX="16dp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
 
@@ -209,7 +209,7 @@
                             android:id="@+id/textView13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
+                            android:layout_marginStart="56dp"
                             android:layout_marginTop="11dp"
                             android:text="La Môme"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -231,7 +231,7 @@
                             android:id="@+id/textView12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="72dp"
+                            android:layout_marginStart="44dp"
                             android:layout_marginTop="11dp"
                             android:text="Le M Restaurant"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="40dp"
                             android:layout_marginTop="11dp"
-                            android:text="L'Axel"
+                            android:text="Chez Lucie"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView5"
