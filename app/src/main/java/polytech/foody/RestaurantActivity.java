@@ -103,17 +103,6 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        LinearLayout linearLayout = findViewById(R.id.myLinearLayout);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        } else {
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
-        }
-    }
-
-    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
     }

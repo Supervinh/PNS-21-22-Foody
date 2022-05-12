@@ -35,26 +35,40 @@
 
         <activity
             android:name=".UserProfile"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity
             android:name=".PostActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity
             android:name=".RestaurantActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity android:name=".CommentCreationActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity
             android:name=".ReservationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity android:name=".ReviewCreationActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:configChanges="orientation"/>
 
         <activity android:name=".SearchActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:configChanges="orientation"/>
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
