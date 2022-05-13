@@ -36,8 +36,8 @@ public class FragmentRestaurant extends Fragment {
         TextView restaurantName = rootView.findViewById(R.id.restaurantName);
         restaurantName.setText(restaurant.name);
 
-        ImageView picture = rootView.findViewById(R.id.restaurantPicture);
-        picture.setImageResource(restaurant.image);
+        //ImageView picture = rootView.findViewById(R.id.restaurantPicture);
+        //picture.setImageResource(restaurant.image);
 
         TextView nutriPoints = rootView.findViewById(R.id.restaurantNutriPoints);
         String nutriPointsString = "NutriPoints : " + restaurant.nutriPoints;
