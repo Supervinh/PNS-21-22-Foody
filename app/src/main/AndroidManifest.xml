@@ -36,17 +36,17 @@
         <activity
             android:name=".RestaurantActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".FriendProfil"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".UserProfile"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".PostActivity"
@@ -55,29 +55,29 @@
 
         <activity android:name=".CommentCreationActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity android:name=".NotificationActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".ReservationActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity android:name=".ReviewCreationActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity android:name=".SearchActivity"
             android:exported="false"
-            android:configChanges="orientation"/>
+            android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:configChanges="orientation">
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

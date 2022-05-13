@@ -1,9 +1,13 @@
 package polytech.foody;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -91,4 +95,5 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
     public void moveCamera() {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gpsFragment.getPosition(), 15f));
     }
+
 }
