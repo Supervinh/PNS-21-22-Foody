@@ -1,7 +1,5 @@
 package polytech.foody;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static polytech.foody.MainActivity.CHANNEL1_ID;
 import static polytech.foody.MainActivity.CHANNEL3_ID;
 
 import android.Manifest;
@@ -9,13 +7,13 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
+
 import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.telecom.Call;
-import android.widget.Button;
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,15 +26,13 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
-import java.sql.Time;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
-import polytech.foody.notifications.PermissionGranted;
+
+
+
 
 public class ReservationActivity extends AppCompatActivity {
-    String name;
+    String name="Restaurant";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +77,7 @@ public class ReservationActivity extends AppCompatActivity {
                                 IAgendaActivity.REQUEST_CALENDAR_WRITE);
                     }else {
                         this.addToAgenda();
-                        Toast.makeText(this, "Ajouté à l'agenda" ,Toast.LENGTH_SHORT ).show();
+                        //Toast.makeText(this, "Ajouté à l'agenda" ,Toast.LENGTH_SHORT ).show();
                         //findViewById(R.id.btn_agenda).setEnabled(false);
                     }
 
@@ -104,7 +100,7 @@ public class ReservationActivity extends AppCompatActivity {
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
 
 
-        long calID = 2; // Make sure to which calender you want to add event
+        long calID = 3; // Make sure to which calender you want to add event
         long startMillis = 0;
         long endMillis = 0;
         Calendar beginTime = Calendar.getInstance();
@@ -113,8 +109,9 @@ public class ReservationActivity extends AppCompatActivity {
         beginTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
         beginTime.set(Calendar.HOUR,timePicker.getHour());
         beginTime.set(Calendar.MINUTE,timePicker.getMinute());
-
+        Toast.makeText(this, timePicker.getHour()+"" ,Toast.LENGTH_SHORT ).show();
         startMillis = beginTime.getTimeInMillis();
+
         Calendar endTime = Calendar.getInstance();
         endTime.set(Calendar.YEAR, datePicker.getYear());
         endTime.set(Calendar.MONTH, datePicker.getYear());
@@ -128,7 +125,7 @@ public class ReservationActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(CalendarContract.Events.DTSTART, startMillis);
         values.put(CalendarContract.Events.DTEND, endMillis);
-        values.put(CalendarContract.Events.TITLE, name);
+        values.put(CalendarContract.Events.TITLE, this.name);
         values.put(CalendarContract.Events.DESCRIPTION, "Reservation Foody");
         values.put(CalendarContract.Events.CALENDAR_ID, calID);
         values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
