@@ -15,4 +15,6 @@
     <string name="commentaires">Commentaires:</string>
     <string name="nom_du_restaurant">Nom du restaurant</string>
     <string name="reserver">Réserver</string>
+    <string name="date">Date:</string>
+    <string name="heure">Heure:</string>
 </resources>

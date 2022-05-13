@@ -8,13 +8,18 @@ import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.telecom.Call;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +28,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -30,14 +36,20 @@ import java.util.TimeZone;
 import polytech.foody.notifications.PermissionGranted;
 
 public class ReservationActivity extends AppCompatActivity {
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation);
 
+        Intent intentRestaurant = getIntent();
+        name = intentRestaurant.getStringExtra("name");
         String txt = "Réservation";
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
+
+        TextView restaurantName = findViewById(R.id.textViewRestaurant);
+        restaurantName.setText(name);
 
         findViewById( R.id.btn_add_post ).setOnClickListener(
                 click -> {
@@ -57,57 +69,71 @@ public class ReservationActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
 
+        findViewById(R.id.btn_agenda).setOnClickListener(
+                click -> {
+                    if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_DENIED) {
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.READ_CALENDAR},
+                                IAgendaActivity.REQUEST_CALENDAR_READ);
+                    } else if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.WRITE_CALENDAR},
+                                IAgendaActivity.REQUEST_CALENDAR_WRITE);
+                    }else {
+                        this.addToAgenda();
+                        Toast.makeText(this, "Ajouté à l'agenda" ,Toast.LENGTH_SHORT ).show();
+                        //findViewById(R.id.btn_agenda).setEnabled(false);
+                    }
+
+                }
+        );
         findViewById(R.id.buttonReserver).setOnClickListener(click -> {
+            DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+            TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
             //recupere le titre
-            String title = ((EditText)findViewById(R.id.textInputNom)).getText().toString();
-            String date = ((EditText)findViewById(R.id.textInputDate)).getText().toString();
+            String title = name;
+            String date = datePicker.toString() + timePicker.toString();
             String nbPersonne = ((EditText)findViewById(R.id.textInputNombre)).getText().toString();
-            sendNotificationOnChannel(title, date, nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
+            sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+"h"+timePicker.getMinute(), nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
 
-
-            final int callbackId = 42;
-            checkPermission(callbackId, Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR);
-
-            long calID = 2; // Make sure to which calender you want to add event
-            long startMillis = 0;
-            long endMillis = 0;
-            Calendar beginTime = Calendar.getInstance();
-            beginTime.set(Calendar.YEAR, 2022);
-            beginTime.set(Calendar.MONTH, Calendar.MAY);
-            beginTime.set(Calendar.DAY_OF_MONTH, 13);
-            beginTime.set(Calendar.HOUR,9);
-            startMillis = beginTime.getTimeInMillis();
-            Calendar endTime = Calendar.getInstance();
-            endTime.set(Calendar.YEAR, 2022);
-            endTime.set(Calendar.MONTH, Calendar.MAY);
-            endTime.set(Calendar.DAY_OF_MONTH, 13);
-            endTime.set(Calendar.HOUR,10);
-            endMillis = endTime.getTimeInMillis();
-            Toast.makeText(ReservationActivity.this,startMillis+"_"+endMillis, Toast.LENGTH_SHORT ).show();
-            ContentResolver cr = getContentResolver();
-            ContentValues values = new ContentValues();
-            values.put(CalendarContract.Events.DTSTART, startMillis);
-            values.put(CalendarContract.Events.DTEND, endMillis);
-            values.put(CalendarContract.Events.TITLE, "Hackathon");
-            values.put(CalendarContract.Events.DESCRIPTION, "do some code");
-            values.put(CalendarContract.Events.CALENDAR_ID, calID);
-            values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
-            Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
-            //Toast.makeText(ReservationActivity.this,uri+"", Toast.LENGTH_SHORT ).show();
-            // get the event ID that is the last element in the Uri
-            //long eventID = Long.parseLong(uri.getLastPathSegment());
-
-            sendNotificationOnChannel(title, date, nbPersonne, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
+            //sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+":"+timePicker.getMinute(), nbPersonne, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
         });
     }
-    private void checkPermission(int callbackId, String... permissionsId) {
-        boolean permissions = true;
-        for (String p : permissionsId) {
-            permissions = permissions && ContextCompat.checkSelfPermission(this, p) == PERMISSION_GRANTED;
-        }
+    private void addToAgenda(){
+        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+        TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
 
-        if (!permissions)
-            ActivityCompat.requestPermissions(this, permissionsId, callbackId);
+
+        long calID = 2; // Make sure to which calender you want to add event
+        long startMillis = 0;
+        long endMillis = 0;
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(Calendar.YEAR, datePicker.getYear());
+        beginTime.set(Calendar.MONTH, datePicker.getYear());
+        beginTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
+        beginTime.set(Calendar.HOUR,timePicker.getHour());
+        beginTime.set(Calendar.MINUTE,timePicker.getMinute());
+
+        startMillis = beginTime.getTimeInMillis();
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(Calendar.YEAR, datePicker.getYear());
+        endTime.set(Calendar.MONTH, datePicker.getYear());
+        endTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
+        endTime.set(Calendar.HOUR,timePicker.getHour() + 1 );
+        endTime.set(Calendar.MINUTE, timePicker.getMinute());
+        endMillis = endTime.getTimeInMillis();
+
+
+        ContentResolver cr = getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(CalendarContract.Events.DTSTART, startMillis);
+        values.put(CalendarContract.Events.DTEND, endMillis);
+        values.put(CalendarContract.Events.TITLE, name);
+        values.put(CalendarContract.Events.DESCRIPTION, "Reservation Foody");
+        values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
+        Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+
     }
 
     private int notificationId = 0;

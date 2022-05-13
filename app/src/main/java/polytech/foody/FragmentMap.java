@@ -15,11 +15,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.GeolocationPermissions;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * A styled map using JSON styles from a raw resource.
@@ -66,13 +69,37 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
         mapView.getMapAsync(this);
 
-        boolean permissionGranted = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-        if (permissionGranted){
+        return rootView;
+    }
+
+
+    /**
+     * Manipulates the map when it's available.
+     * The API invokes this callback when the map is ready for use.
+     */
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
+        MapsInitializer.initialize(this.requireActivity());
+
+        String address = restaurant.address;
+
+        Geocoder geocoder = new Geocoder(getActivity());
+        List<Address> RestaurantLocations = null;
+        currentLocation = new Location(String.valueOf(0));
+
+        try {
+            RestaurantLocations = geocoder.getFromLocationName(address, 3);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (ActivityCompat.checkSelfPermission(this.requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
             LocationListener listener = new LocationListener() {
                 @Override
-                public void onLocationChanged(@NonNull Location location) {
+                public void onLocationChanged(Location location) {
                     currentLocation = location;
-                    igpsActivity.moveCamera();
                 }
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras){
@@ -87,38 +114,13 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
                 }
             };
-            LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
-            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, listener);
-        }
-        return rootView;
-    }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 1, listener);
 
-
-    /**
-     * Manipulates the map when it's available.
-     * The API invokes this callback when the map is ready for use.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-        MapsInitializer.initialize(this.getActivity());
-
-        String address = restaurant.address;
-
-        Geocoder geocoder = new Geocoder(getActivity());
-        List<Address> RestaurantLocations = null;
-
-        try {
-            RestaurantLocations = geocoder.getFromLocationName(address, 3);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             Address tmp = RestaurantLocations.get(0);
             Location tmpLocation = new Location("");
             tmpLocation.setLatitude(RestaurantLocations.get(0).getLatitude());
             tmpLocation.setLongitude( RestaurantLocations.get(0).getLongitude());
+
 
             float distance = tmpLocation.distanceTo(currentLocation);
 

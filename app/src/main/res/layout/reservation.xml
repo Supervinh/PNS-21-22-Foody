@@ -100,23 +100,56 @@
                     android:layout_width="354dp"
                     android:layout_height="27dp"
                     android:layout_marginTop="32dp"
-                    android:text="@string/date_et_heure_de_la_reservation"
+                    android:text="@string/date"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputNombre" />
 
-                <EditText
-                    android:id="@+id/textInputDate"
+                <DatePicker
+                    android:id="@+id/datePicker"
                     android:layout_width="354dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
+
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="354dp"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/heure"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+
+                <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="354dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:timePickerMode="spinner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
+
+                <Button
+                    android:id="@+id/btn_agenda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ajouter à l'agenda"
                     android:layout_marginTop="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewDate">
-
-                </EditText>
+                    app:layout_constraintTop_toBottomOf="@+id/timePicker"/>
 
                 <TextView
                     android:id="@+id/textViewCommentaires"
@@ -127,7 +160,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_agenda" />
 
                 <EditText
                     android:id="@+id/textInputCommentaires"

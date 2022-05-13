@@ -79,6 +79,7 @@ public class FragmentRestaurant extends Fragment {
         reservation.setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getContext(), ReservationActivity.class);
+                    intent.putExtra("name", restaurant.name);
                     startActivity(intent);
                 });
 
