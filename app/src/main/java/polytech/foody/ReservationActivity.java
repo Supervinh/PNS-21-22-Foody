@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.icu.util.TimeZone;
 import android.net.Uri;
@@ -71,10 +72,6 @@ public class ReservationActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(this,
                                 new String[]{Manifest.permission.READ_CALENDAR},
                                 IAgendaActivity.REQUEST_CALENDAR_READ);
-                    } else if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
-                        ActivityCompat.requestPermissions(this,
-                                new String[]{Manifest.permission.WRITE_CALENDAR},
-                                IAgendaActivity.REQUEST_CALENDAR_WRITE);
                     }else {
                         this.addToAgenda();
                         //Toast.makeText(this, "Ajouté à l'agenda" ,Toast.LENGTH_SHORT ).show();
@@ -90,47 +87,53 @@ public class ReservationActivity extends AppCompatActivity {
             String title = name;
             String date = datePicker.toString() + timePicker.toString();
             String nbPersonne = ((EditText)findViewById(R.id.textInputNombre)).getText().toString();
-            sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+"h"+timePicker.getMinute(), nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
+            sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+1+"/"+datePicker.getYear()+" à "+timePicker.getHour()+"h"+timePicker.getMinute(), nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
 
             //sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+":"+timePicker.getMinute(), nbPersonne, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
         });
     }
     private void addToAgenda(){
-        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-        TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_CALENDAR},
+                    IAgendaActivity.REQUEST_CALENDAR_WRITE);
+        }else{
+            DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+            TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+            ContentResolver cr = this.getContentResolver();
 
 
-        long calID = 3; // Make sure to which calender you want to add event
-        long startMillis = 0;
-        long endMillis = 0;
-        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(Calendar.YEAR, datePicker.getYear());
-        beginTime.set(Calendar.MONTH, datePicker.getYear());
-        beginTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
-        beginTime.set(Calendar.HOUR,timePicker.getHour());
-        beginTime.set(Calendar.MINUTE,timePicker.getMinute());
-        Toast.makeText(this, timePicker.getHour()+"" ,Toast.LENGTH_SHORT ).show();
-        startMillis = beginTime.getTimeInMillis();
+            long calID = 2; // Make sure to which calender you want to add event
+            long startMillis = 0;
+            long endMillis = 0;
+            Calendar beginTime = Calendar.getInstance();
+            beginTime.set(Calendar.YEAR, datePicker.getYear());
+            beginTime.set(Calendar.MONTH, datePicker.getYear());
+            beginTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
+            beginTime.set(Calendar.HOUR, timePicker.getHour());
+            beginTime.set(Calendar.MINUTE, timePicker.getMinute());
+            Toast.makeText(this, timePicker.getHour() + "", Toast.LENGTH_SHORT).show();
+            startMillis = beginTime.getTimeInMillis();
 
-        Calendar endTime = Calendar.getInstance();
-        endTime.set(Calendar.YEAR, datePicker.getYear());
-        endTime.set(Calendar.MONTH, datePicker.getYear());
-        endTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
-        endTime.set(Calendar.HOUR,timePicker.getHour() + 1 );
-        endTime.set(Calendar.MINUTE, timePicker.getMinute());
-        endMillis = endTime.getTimeInMillis();
+            Calendar endTime = Calendar.getInstance();
+            endTime.set(Calendar.YEAR, datePicker.getYear());
+            endTime.set(Calendar.MONTH, datePicker.getYear());
+            endTime.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
+            endTime.set(Calendar.HOUR, timePicker.getHour() + 1);
+            endTime.set(Calendar.MINUTE, timePicker.getMinute());
+            endMillis = endTime.getTimeInMillis();
 
 
-        ContentResolver cr = getContentResolver();
-        ContentValues values = new ContentValues();
-        values.put(CalendarContract.Events.DTSTART, startMillis);
-        values.put(CalendarContract.Events.DTEND, endMillis);
-        values.put(CalendarContract.Events.TITLE, this.name);
-        values.put(CalendarContract.Events.DESCRIPTION, "Reservation Foody");
-        values.put(CalendarContract.Events.CALENDAR_ID, calID);
-        values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
-        Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
-
+            ContentValues values = new ContentValues();
+            values.put(CalendarContract.Events.DTSTART, startMillis);
+            values.put(CalendarContract.Events.DTEND, endMillis);
+            values.put(CalendarContract.Events.TITLE, this.name);
+            values.put(CalendarContract.Events.DESCRIPTION, "Reservation Foody");
+            values.put(CalendarContract.Events.CALENDAR_ID, calID);
+            values.put(CalendarContract.Events.ALL_DAY, false);
+            values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString());
+            Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+        }
     }
 
     private int notificationId = 0;
