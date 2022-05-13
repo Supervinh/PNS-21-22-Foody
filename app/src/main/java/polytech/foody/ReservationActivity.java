@@ -7,14 +7,11 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
-import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.icu.util.TimeZone;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,12 +25,10 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 
-
-
-
-
 public class ReservationActivity extends AppCompatActivity {
-    String name="Restaurant";
+    String name = "Restaurant";
+    private final int notificationId = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,25 +43,25 @@ public class ReservationActivity extends AppCompatActivity {
         TextView restaurantName = findViewById(R.id.textViewRestaurant);
         restaurantName.setText(name);
 
-        findViewById( R.id.btn_add_post ).setOnClickListener(
+        findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                     startActivity(intent);
                 });
 
-        findViewById( R.id.btn_home ).setOnClickListener(
+        findViewById(R.id.btn_home).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 });
 
-        findViewById( R.id.btn_profile ).setOnClickListener(
+        findViewById(R.id.btn_profile).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     startActivity(intent);
                 });
 
-        findViewById( R.id.btn_back ).setOnClickListener(
+        findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
@@ -78,7 +73,12 @@ public class ReservationActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(this,
                                 new String[]{Manifest.permission.READ_CALENDAR},
                                 IAgendaActivity.REQUEST_CALENDAR_READ);
-                    }else {
+                    }
+                    if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.WRITE_CALENDAR},
+                                IAgendaActivity.REQUEST_CALENDAR_WRITE);
+                    } else {
                         this.addToAgenda();
                         //Toast.makeText(this, "Ajouté à l'agenda" ,Toast.LENGTH_SHORT ).show();
                         //findViewById(R.id.btn_agenda).setEnabled(false);
@@ -87,13 +87,13 @@ public class ReservationActivity extends AppCompatActivity {
                 }
         );
         findViewById(R.id.buttonReserver).setOnClickListener(click -> {
-            DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-            TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+            DatePicker datePicker = findViewById(R.id.datePicker);
+            TimePicker timePicker = findViewById(R.id.timePicker);
             //recupere le titre
             String title = name;
             String date = datePicker.toString() + timePicker.toString();
-            String nbPersonne = ((EditText)findViewById(R.id.textInputNombre)).getText().toString();
-            sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+1+"/"+datePicker.getYear()+" à "+timePicker.getHour()+"h"+timePicker.getMinute(), nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
+            String nbPersonne = ((EditText) findViewById(R.id.textInputNombre)).getText().toString();
+            sendNotificationOnChannel(title, datePicker.getDayOfMonth() + "/" + datePicker.getMonth() + 1 + "/" + datePicker.getYear() + " à " + timePicker.getHour() + "h" + timePicker.getMinute(), nbPersonne, CHANNEL3_ID, NotificationCompat.PRIORITY_DEFAULT);
 
             //sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+":"+timePicker.getMinute(), nbPersonne, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
         });
@@ -104,14 +104,15 @@ public class ReservationActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
     }
-    private void addToAgenda(){
+
+    private void addToAgenda() {
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_CALENDAR},
                     IAgendaActivity.REQUEST_CALENDAR_WRITE);
-        }else{
-            DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-            TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+        } else {
+            DatePicker datePicker = findViewById(R.id.datePicker);
+            TimePicker timePicker = findViewById(R.id.timePicker);
             ContentResolver cr = this.getContentResolver();
 
 
@@ -148,16 +149,16 @@ public class ReservationActivity extends AppCompatActivity {
         }
     }
 
-    private int notificationId = 0;
-
     private void sendNotificationOnChannel(String title, String date, String nbPersonne, String channelId, int priority) {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId)
                 .setSmallIcon(R.drawable.reservation)
                 .setContentTitle("Vous venez de reserver le restaurant " + title)
-                .setContentText("Réservation le "+date+" pour "+nbPersonne+" personnes.")
+                .setContentText("Réservation le " + date + " pour " + nbPersonne + " personnes.")
                 .setPriority(priority);
-        switch (channelId){
-            case CHANNEL3_ID: notification.setSmallIcon(R.drawable.reservation); break;
+        switch (channelId) {
+            case CHANNEL3_ID:
+                notification.setSmallIcon(R.drawable.reservation);
+                break;
         }
         NotificationManagerCompat.from(this).notify(notificationId, notification.build());
     }

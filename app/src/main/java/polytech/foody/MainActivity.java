@@ -43,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.out.println("draw" + favorite.getBackground());
-                if(isStarred){
+                if (isStarred) {
                     favorite.setBackgroundResource(R.drawable.starempty);
-                    isStarred = false;}
-                else{
+                    isStarred = false;
+                } else {
                     favorite.setBackgroundResource(R.drawable.star);
-                    isStarred = true;}
+                    isStarred = true;
+                }
             }
         });
 
@@ -56,12 +57,13 @@ public class MainActivity extends AppCompatActivity {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isLiked){
+                if (isLiked) {
                     like.setBackgroundResource(R.drawable.coeur);
-                    isLiked = false;}
-                else{
+                    isLiked = false;
+                } else {
                     like.setBackgroundResource(R.drawable.coeurrempli);
-                    isLiked = true;}
+                    isLiked = true;
+                }
             }
         });
 
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
                     startActivity(intent);
 
                 });

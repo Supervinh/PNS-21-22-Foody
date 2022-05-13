@@ -12,12 +12,12 @@ public class User {
     List<Restaurant> favoriteRestaurants;
     List<Restaurant> recentRestaurants;
 
-    List <User> subscriptions;
+    List<User> subscriptions;
 
     List<Post> posts;
 
 
-    public User(String firstName, String lastName ){
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         nutriPoints = 0;
@@ -27,7 +27,7 @@ public class User {
         subscriptions = new ArrayList<>();
         posts = new ArrayList<>();
 
-        
+
     }
 
 

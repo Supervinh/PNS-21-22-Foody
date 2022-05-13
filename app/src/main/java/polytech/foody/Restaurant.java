@@ -10,14 +10,14 @@ public class Restaurant {
     double score;
     int nombreDeNotes;
 
-    public Restaurant (String name, String description, int image, int nutriPoints, String address ){
+    public Restaurant(String name, String description, int image, int nutriPoints, String address) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.nutriPoints = nutriPoints;
         this.visitors = 0;
         this.score = 0.0;
-        this.nombreDeNotes=0;
+        this.nombreDeNotes = 0;
         this.address = address;
     }
 

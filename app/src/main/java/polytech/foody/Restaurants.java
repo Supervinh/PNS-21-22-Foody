@@ -10,19 +10,19 @@ public class Restaurants {
         this.list = list;
     }
 
-    public Restaurants(){
+    public Restaurants() {
         list = new ArrayList<>();
     }
 
-    public int size(){
+    public int size() {
         return list.size();
     }
 
-    public Restaurant get(int pos){
+    public Restaurant get(int pos) {
         return list.get(pos);
     }
 
-    public void add(Restaurant restaurant){
+    public void add(Restaurant restaurant) {
         list.add(restaurant);
     }
 

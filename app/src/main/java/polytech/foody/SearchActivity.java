@@ -35,19 +35,17 @@ public class SearchActivity extends AppCompatActivity {
     URL url;
     Activity activity;
     Restaurants restaurants = new Restaurants();
-    private ProgressDialog progressDialog;
-
-
     //Direct Web services URL
     String path = "http://bluedays.com/data/web/restaurants.json";
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         activity = this;
-        listView = (ListView) findViewById(R.id.listView);
-            //Call WebService
+        listView = findViewById(R.id.listView);
+        //Call WebService
         new GetServerData().execute();
 
         TextView textView = findViewById(R.id.textHeader);
@@ -94,8 +92,64 @@ public class SearchActivity extends AppCompatActivity {
     // In case if you deploy rest web service, then use below link and replace below ip address with yours
     //http://192.168.2.22:8080/JAXRSJsonExample/rest/countries
 
-    class GetServerData extends AsyncTask
-    {
+    protected Void getWebServiceResponseData() {
+
+        try {
+
+            //Direct Web services URL
+            url = new URL(path);
+            Log.d(TAG, "ServerData: " + path);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("GET");
+
+            int responseCode = conn.getResponseCode();
+
+            Log.d(TAG, "Response code: " + responseCode);
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                // Reading response from input Stream
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                String output;
+                response = new StringBuffer();
+
+                while ((output = in.readLine()) != null) {
+                    response.append(output);
+                }
+                in.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        responseText = response.toString();
+        //Call ServerData() method to call webservice and store result in response
+        //  response = service.ServerData(path, postDataParams);
+        Log.d(TAG, "data:" + responseText);
+        try {
+            JSONArray jsonArray = new JSONArray(responseText);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonRoot = jsonArray.getJSONObject(i);
+                String name = jsonRoot.getString("name");
+                String description = jsonRoot.getString("description");
+                int image = jsonRoot.getInt("image");
+                String address = jsonRoot.getString("address");
+                int nutriPoints = jsonRoot.getInt("nutriPoints");
+                int visitors = jsonRoot.getInt("visitors");
+                double score = jsonRoot.getDouble("score");
+                int nombreDeNotes = jsonRoot.getInt("nombreDeNotes");
+                Restaurant r = new Restaurant(name, description, image, address, nutriPoints, visitors, score, nombreDeNotes);
+                restaurants.add(r);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    class GetServerData extends AsyncTask {
 
         @Override
         protected void onPreExecute() {
@@ -125,11 +179,11 @@ public class SearchActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    Toast.makeText(activity.getApplicationContext(),"Vous avez sélectionné "+restaurants.get(position).getName(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), "Vous avez sélectionné " + restaurants.get(position).getName(), Toast.LENGTH_SHORT).show();
                     final Intent launchActivity = new Intent(SearchActivity.this, RestaurantActivity.class);
                     launchActivity.putExtra("name", restaurants.get(position).getName());
                     launchActivity.putExtra("description", restaurants.get(position).getDescription());
-                    launchActivity.putExtra( "image", restaurants.get(position).getImage());
+                    launchActivity.putExtra("image", restaurants.get(position).getImage());
                     launchActivity.putExtra("address", restaurants.get(position).getAddress());
                     launchActivity.putExtra("nutriPoints", restaurants.get(position).getNutriPoints());
                     launchActivity.putExtra("visitors", restaurants.get(position).getVisitors());
@@ -137,66 +191,9 @@ public class SearchActivity extends AppCompatActivity {
                     launchActivity.putExtra("nombreDeNotes", restaurants.get(position).getNombreDeNotes());
                     System.out.println(position);
                     startActivity(launchActivity);
-                    }
+                }
             });
         }
-    }
-
-    protected Void getWebServiceResponseData() {
-
-        try {
-
-            //Direct Web services URL
-            url = new URL(path);
-            Log.d(TAG, "ServerData: " + path);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("GET");
-
-            int responseCode = conn.getResponseCode();
-
-            Log.d(TAG, "Response code: " + responseCode);
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                // Reading response from input Stream
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
-                String output;
-                response = new StringBuffer();
-
-                while ((output = in.readLine()) != null) {
-                    response.append(output);
-                }
-                in.close();
-            }}
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-        responseText = response.toString();
-        //Call ServerData() method to call webservice and store result in response
-        //  response = service.ServerData(path, postDataParams);
-        Log.d(TAG, "data:" + responseText);
-        try {
-            JSONArray jsonArray = new JSONArray(responseText);
-            for(int i=0; i < jsonArray.length(); i++){
-                JSONObject jsonRoot = jsonArray.getJSONObject(i);
-                String name = jsonRoot.getString("name");
-                String description = jsonRoot.getString("description");
-                int image = jsonRoot.getInt("image");
-                String address = jsonRoot.getString("address");
-                int nutriPoints = jsonRoot.getInt("nutriPoints");
-                int visitors = jsonRoot.getInt("visitors");
-                double score = jsonRoot.getDouble("score");
-                int nombreDeNotes = jsonRoot.getInt("nombreDeNotes");
-                Restaurant r = new Restaurant(name, description, image, address, nutriPoints, visitors, score, nombreDeNotes);
-                restaurants.add(r);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 

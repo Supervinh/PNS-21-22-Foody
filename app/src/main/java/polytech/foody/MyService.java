@@ -15,7 +15,7 @@ public class MyService extends Service {
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
 
     }

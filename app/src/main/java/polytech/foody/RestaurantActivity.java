@@ -1,26 +1,15 @@
 package polytech.foody;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
-import java.io.InputStream;
-import java.net.URL;
 
 public class RestaurantActivity extends FragmentActivity implements IGPSActivity, OnMapReadyCallback {
     private FragmentMap gpsFragment;
@@ -34,10 +23,10 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         Intent intentRestaurant = getIntent();
         String name = intentRestaurant.getStringExtra("name");
         String description = intentRestaurant.getStringExtra("description");
-        int image = intentRestaurant.getIntExtra( "image", 0);
+        int image = intentRestaurant.getIntExtra("image", 0);
 
         String adress = intentRestaurant.getStringExtra("address");
-        int nutriPoint = intentRestaurant.getIntExtra("nutriPoints", 10 );
+        int nutriPoint = intentRestaurant.getIntExtra("nutriPoints", 10);
         int visitors = intentRestaurant.getIntExtra("visitors", 110);
         double score = intentRestaurant.getDoubleExtra("score", 4.5);
         int nombreDeNotes = intentRestaurant.getIntExtra("nombreDeNotes", 43);
@@ -78,7 +67,7 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
 
                 });
 
-        findViewById( R.id.btn_back ).setOnClickListener(
+        findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);

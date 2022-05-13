@@ -2,14 +2,8 @@ package polytech.foody;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -19,11 +13,14 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.Arrays;
 
 import polytech.foody.notifications.Notifications;
-import polytech.foody.notifications.PermissionGranted;
-import polytech.foody.notifications.PermissionNotGranted;
 import polytech.foody.notifications.factoryNotif.AbstractFactoryNotif;
 import polytech.foody.notifications.factoryNotif.PermissionGrantedFactory;
 import polytech.foody.notifications.factoryNotif.PermissionNotGrantedFactory;
@@ -41,8 +38,8 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gps_test);
 
-        et_status = (EditText) findViewById(R.id.et_status);
-        et_position = (EditText) findViewById(R.id.et_position);
+        et_status = findViewById(R.id.et_status);
+        et_position = findViewById(R.id.et_position);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         gpsFragment = (GpsFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentGps);
@@ -53,7 +50,7 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
             transaction.addToBackStack(null);
             transaction.commit();
             if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{ACCESS_FINE_LOCATION},100);
+                requestPermissions(new String[]{ACCESS_FINE_LOCATION}, 100);
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -73,15 +70,14 @@ public class GpsTest extends AppCompatActivity implements LocationListener {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         Log.d("status", Arrays.toString(grantResults));
-        if (grantResults.length!=0){
-            if(grantResults[0] == 0){
+        if (grantResults.length != 0) {
+            if (grantResults[0] == 0) {
                 Toast.makeText(GpsTest.this, "Permission GPS accordée", Toast.LENGTH_SHORT).show();
                 Notifications notification;
                 AbstractFactoryNotif factory = new PermissionGrantedFactory();
                 notification = factory.buildGranted(GpsTest.this, "Permission accordée");
                 notification.sendNotificationOnChannel();
-            }
-            else {
+            } else {
                 Toast.makeText(GpsTest.this, "Permission GPS non accordée", Toast.LENGTH_SHORT).show();
                 Notifications notification;
                 AbstractFactoryNotif factory = new PermissionNotGrantedFactory();

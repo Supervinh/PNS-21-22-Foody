@@ -51,12 +51,12 @@ public class PictureFragment extends Fragment {
         getActivity().startActivityForResult(intent, IPictureActivity.REQUEST_CAMERA);
     }
 
-    public void setImage(Bitmap bitmap){
-        imageView.setImageBitmap(bitmap);
-        currentImage = bitmap;
+    public Bitmap getImage() {
+        return currentImage;
     }
 
-    public Bitmap getImage(){
-        return currentImage;
+    public void setImage(Bitmap bitmap) {
+        imageView.setImageBitmap(bitmap);
+        currentImage = bitmap;
     }
 }
