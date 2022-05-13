@@ -48,11 +48,6 @@
             android:exported="false"
             android:configChanges="orientation"/>
 
-        <activity
-            android:name=".RestaurantActivity"
-            android:exported="false"
-            android:configChanges="orientation"/>
-
         <activity android:name=".CommentCreationActivity"
             android:exported="false"
             android:configChanges="orientation"/>
@@ -80,6 +75,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".MyService" />
     </application>
 
 </manifest>

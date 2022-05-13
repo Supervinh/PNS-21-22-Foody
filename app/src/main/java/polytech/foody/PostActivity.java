@@ -98,6 +98,11 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
 
             sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_HIGH);
         });
+        findViewById(R.id.buttonAnnuler).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MyService.class);
+                    startService(intent);
+                });
     }
 
     /**

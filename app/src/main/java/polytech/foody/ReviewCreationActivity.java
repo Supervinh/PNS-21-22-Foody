@@ -52,5 +52,11 @@ public class ReviewCreationActivity extends AppCompatActivity {
 
                 });
 
+        findViewById(R.id.buttonAnnuler).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MyService.class);
+                    startService(intent);
+                });
+
     }
 }
