@@ -91,12 +91,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
 
-        findViewById(R.id.imageView8).setOnClickListener(
-                click -> {
-                    Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                    startActivity(intent);
-                });
-
         findViewById(R.id.imageView12).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), CommentCreationActivity.class);
