@@ -52,8 +52,6 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
 
         Fragment restaurantFrag = new FragmentRestaurant(restaurant);
         getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
-        //Fragment restaurantFrag = new FragmentRestaurant();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.restaurantLocation, restaurantFrag).commit();
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
