@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.imageView11).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                    Intent intent = new Intent(getApplicationContext(), FriendProfil.class);
                     startActivity(intent);
                 });
 

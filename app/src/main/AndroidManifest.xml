@@ -39,6 +39,11 @@
             android:configChanges="orientation"/>
 
         <activity
+            android:name=".FriendProfil"
+            android:exported="false"
+            android:configChanges="orientation"/>
+
+        <activity
             android:name=".UserProfile"
             android:exported="false"
             android:configChanges="orientation"/>
