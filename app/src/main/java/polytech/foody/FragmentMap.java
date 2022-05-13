@@ -1,8 +1,6 @@
 package polytech.foody;
 
 
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -15,13 +13,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.GeolocationPermissions;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -33,7 +29,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 /**
  * A styled map using JSON styles from a raw resource.
@@ -47,18 +42,19 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
     private IGPSActivity igpsActivity;
     private Location currentLocation;
 
-    public FragmentMap(){}
+    public FragmentMap() {
+    }
 
     //public FragmentMap (IGPSActivity activity) {
-       // igpsActivity = activity;
+    // igpsActivity = activity;
     //}
 
-    public FragmentMap (Restaurant restaurant) {
+    public FragmentMap(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
         mapView = rootView.findViewById(R.id.mapView);
@@ -101,16 +97,19 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
                 public void onLocationChanged(Location location) {
                     currentLocation = location;
                 }
+
                 @Override
-                public void onStatusChanged(String provider, int status, Bundle extras){
+                public void onStatusChanged(String provider, int status, Bundle extras) {
 
                 }
+
                 @Override
-                public void onProviderEnabled(String provider){
+                public void onProviderEnabled(String provider) {
 
                 }
+
                 @Override
-                public void onProviderDisabled(String provider){
+                public void onProviderDisabled(String provider) {
 
                 }
             };
@@ -119,16 +118,16 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
             Address tmp = RestaurantLocations.get(0);
             Location tmpLocation = new Location("");
             tmpLocation.setLatitude(RestaurantLocations.get(0).getLatitude());
-            tmpLocation.setLongitude( RestaurantLocations.get(0).getLongitude());
+            tmpLocation.setLongitude(RestaurantLocations.get(0).getLongitude());
 
 
             float distance = tmpLocation.distanceTo(currentLocation);
 
-            for (Address address1: RestaurantLocations){
+            for (Address address1 : RestaurantLocations) {
                 Location location = new Location("");
                 location.setLatitude(address1.getLatitude());
                 location.setLongitude(address1.getLongitude());
-                if (location.distanceTo(currentLocation)< distance){
+                if (location.distanceTo(currentLocation) < distance) {
                     distance = location.distanceTo(currentLocation);
                     tmp = address1;
                 }
@@ -145,17 +144,17 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
     }
 
-    LatLng getPosition(){
+    LatLng getPosition() {
         return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
     }
 
-    String getPlaceName() throws IOException{
-        Geocoder geocoder = new Geocoder( getContext(), Locale.getDefault());
+    String getPlaceName() throws IOException {
+        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
         List<Address> addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
         return addresses.get(0).getLocality();
     }
 
-    void setPlaceName(String placeName){
+    void setPlaceName(String placeName) {
         //TODO
     }
 
