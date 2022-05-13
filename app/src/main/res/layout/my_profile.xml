@@ -67,7 +67,7 @@
                     android:layout_height="18dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
-                    android:text="Nutipoints: 21"
+                    android:text="NutriPoints: 21"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/nbRestos"
                     tools:ignore="MissingConstraints" />
@@ -167,7 +167,7 @@
                     android:layout_width="160dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="40dp"
-                    android:text="Restaurant favoris"
+                    android:text="Restaurants favoris"
                     app:layout_constraintTop_toBottomOf="@+id/imageView"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="40dp" />
@@ -177,7 +177,7 @@
                     android:layout_width="208dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="32dp"
-                    android:text="Restauants recemment visites"
+                    android:text="Restaurants récemment visités"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="43dp" />

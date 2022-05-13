@@ -1,11 +1,14 @@
 package polytech.foody;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 public class FragmentRestaurant extends Fragment {
     View rootView;
     Restaurant restaurant;
+    boolean isPressed = false;
 
     public FragmentRestaurant() {
 
@@ -50,10 +54,17 @@ public class FragmentRestaurant extends Fragment {
         TextView description = rootView.findViewById(R.id.restaurantDescription);
         description.setText(restaurant.description);
 
-        ImageView favorite = rootView.findViewById(R.id.favorite);
+        ImageButton favorite = rootView.findViewById(R.id.favorite);
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("draw" + favorite.getBackground());
+                if(isPressed){
+                    favorite.setBackgroundResource(R.drawable.starempty);
+                    isPressed = false;}
+                else{
+                    favorite.setBackgroundResource(R.drawable.star);
+                    isPressed = true;}
                 makeFavorite(restaurant);
             }
         });
@@ -80,5 +91,4 @@ public class FragmentRestaurant extends Fragment {
 
     private void makeFavorite(Restaurant restaurant) {
     }
-
 }

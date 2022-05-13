@@ -25,6 +25,8 @@
         <entry key="..\:/Perso/IHM/Projet/Foody/app/src/main/res/layout/user_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Perso/IHM/Projet/Foody/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.124" />
         <entry key="..\:/Perso/IHM/Projet/Foody/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.124" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/drawable/button_effect.xml" value="0.1" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout-land/fragment_restaurant_paysage.xml" value="0.16225749559082892" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/activity_main.xml" value="0.17266187524210636" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/activity_main_header.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/activity_restaurant.xml" value="0.1625" />
@@ -34,7 +36,7 @@
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/footer.xml" value="0.3453237504842127" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/fragment_map.xml" value="0.1625" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/fragment_picture.xml" value="0.1625" />
-        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/fragment_restaurant.xml" value="0.1625" />
+        <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/fragment_restaurant.xml" value="0.4627338256488451" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/gps_fragment.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/my_profile.xml" value="0.1625" />
         <entry key="..\:/Users/aurel/AndroidStudioProjects/Foody/app/src/main/res/layout/notifications.xml" value="0.1625" />

@@ -37,7 +37,6 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         int image = intentRestaurant.getIntExtra( "image", 0);
 
         String adress = intentRestaurant.getStringExtra("address");
-        //adress = "1600 Amphitheatre Parkway, Mountain View, CA";
         int nutriPoint = intentRestaurant.getIntExtra("nutriPoints", 10 );
         int visitors = intentRestaurant.getIntExtra("visitors", 110);
         double score = intentRestaurant.getDoubleExtra("score", 4.5);
@@ -48,18 +47,6 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
 
-       /* SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        assert mapFragment != null;
-        mapFragment.getMapAsync(this);
-
-        gpsFragment = (FragmentMap) getSupportFragmentManager().findFragmentById(R.id.restaurantLocation);
-        if (gpsFragment == null) {
-            gpsFragment = new FragmentMap(this);
-            FragmentTransaction gpsTransaction = getSupportFragmentManager().beginTransaction();
-            gpsTransaction.replace(R.id.restaurantLocation, gpsFragment);
-            gpsTransaction.addToBackStack(null);
-            gpsTransaction.commit();
-        }*/
         FragmentMap mapFrag = new FragmentMap(restaurant);
         getSupportFragmentManager().beginTransaction().replace(R.id.map, mapFrag).commit();
 
