@@ -28,6 +28,7 @@ public class Post extends AppCompatActivity implements IPictureActivity {
         this.date = new Date();
         this.author = author;
     }
+
     public Post(String content, User author, Bitmap image) {
         this.place = null;
         this.image = image;

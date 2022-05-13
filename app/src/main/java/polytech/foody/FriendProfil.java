@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FriendProfil extends AppCompatActivity {
     boolean subscribed = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +24,13 @@ public class FriendProfil extends AppCompatActivity {
         subscribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(subscribed){
+                if (subscribed) {
                     subscribe.setText("S'abonner");
-                    subscribed = false;}
-                else{
+                    subscribed = false;
+                } else {
                     subscribe.setText("Se désabonner");
-                    subscribed = true;}
+                    subscribed = true;
+                }
             }
         });
 

@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 public class PostAdapter extends BaseAdapter {
 
-    private PostList listPosts;
-    private Context context;
-    private LayoutInflater inflater;
+    private final PostList listPosts;
+    private final Context context;
+    private final LayoutInflater inflater;
 
-    public PostAdapter (Context context, PostList listS){
-        this.context=context;
-        this.listPosts =listS;
-        inflater=LayoutInflater.from(this.context);
+    public PostAdapter(Context context, PostList listS) {
+        this.context = context;
+        this.listPosts = listS;
+        inflater = LayoutInflater.from(this.context);
     }
 
     @Override

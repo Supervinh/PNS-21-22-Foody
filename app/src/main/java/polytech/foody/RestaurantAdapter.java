@@ -8,18 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 public class RestaurantAdapter extends BaseAdapter {
 
     private final Restaurants listRestaurant;
     private final LayoutInflater inflater;
     private final Activity context;
 
-    public RestaurantAdapter(Activity context, Restaurants listS){
+    public RestaurantAdapter(Activity context, Restaurants listS) {
         this.listRestaurant = listS;
         this.context = context;
-        inflater=LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class RestaurantAdapter extends BaseAdapter {
 
         //(3) : Renseignement des valeurs
         tv_Name.setText(listRestaurant.get(position).getName());
-        tv_Score.setText(String.valueOf("Score : " + listRestaurant.get(position).getScore()));
-        tv_NutriPoints.setText(String.valueOf("NutriPoints : " + listRestaurant.get(position).getNutriPoints()));
+        tv_Score.setText("Score : " + listRestaurant.get(position).getScore());
+        tv_NutriPoints.setText("NutriPoints : " + listRestaurant.get(position).getNutriPoints());
 
         //On retourne l'item créé.
         return layoutItem;

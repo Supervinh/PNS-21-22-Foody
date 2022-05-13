@@ -1,6 +1,5 @@
 package polytech.foody;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -55,7 +54,7 @@ public class CommentCreationActivity extends AppCompatActivity {
         findViewById(R.id.buttonCancelComment).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), MyService.class);
-                    startActivity(intent);
+                    startService(intent);
 
                 });
 

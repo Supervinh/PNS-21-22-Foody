@@ -1,18 +1,11 @@
 package polytech.foody;
 
 
-import static polytech.foody.MainActivity.CHANNEL1_ID;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 public class NotificationActivity extends AppCompatActivity {
     @Override
