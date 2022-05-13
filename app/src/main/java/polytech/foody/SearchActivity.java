@@ -97,7 +97,7 @@ public class SearchActivity extends AppCompatActivity {
             super.onPreExecute();
             // Showing progress dialog
             progressDialog = new ProgressDialog(SearchActivity.this);
-            progressDialog.setMessage("Fetching restaurants data");
+            progressDialog.setMessage("Téléchargement des données des restaurants");
             progressDialog.setCancelable(false);
             progressDialog.show();
 
@@ -120,7 +120,7 @@ public class SearchActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    Toast.makeText(activity.getApplicationContext(),"You Selected "+restaurants.get(position).getName()+ " as Restaurant",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(),"Vous avez sélectionné "+restaurants.get(position).getName(),Toast.LENGTH_SHORT).show();
                     final Intent launchActivity = new Intent(SearchActivity.this, RestaurantActivity.class);
                     launchActivity.putExtra("name", restaurants.get(position).getName());
                     launchActivity.putExtra("description", restaurants.get(position).getDescription());

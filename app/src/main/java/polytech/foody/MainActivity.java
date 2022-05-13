@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,13 +20,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String CHANNEL2_ID = "channel default";
     public static final String CHANNEL3_ID = "channel reservation";
     private static NotificationManager notificationManager;
+    boolean isStarred = false;
+    boolean isLiked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String txt = "Foody";
+        String txt = "Feed";
         TextView textView = findViewById(R.id.textHeader);
         //textView.setText(txt);
 
@@ -34,6 +38,32 @@ public class MainActivity extends AppCompatActivity {
 
         ListView list = findViewById(R.id.listViewMain);
 
+        ImageButton favorite = findViewById(R.id.imageView14);
+        favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("draw" + favorite.getBackground());
+                if(isStarred){
+                    favorite.setBackgroundResource(R.drawable.starempty);
+                    isStarred = false;}
+                else{
+                    favorite.setBackgroundResource(R.drawable.star);
+                    isStarred = true;}
+            }
+        });
+
+        ImageButton like = findViewById(R.id.imageView13);
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isLiked){
+                    like.setBackgroundResource(R.drawable.coeur);
+                    isLiked = false;}
+                else{
+                    like.setBackgroundResource(R.drawable.coeurrempli);
+                    isLiked = true;}
+            }
+        });
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
