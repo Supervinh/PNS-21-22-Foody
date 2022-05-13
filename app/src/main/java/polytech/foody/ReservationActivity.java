@@ -66,6 +66,12 @@ public class ReservationActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
 
+        findViewById( R.id.btn_back ).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    startActivity(intent);
+                });
+
         findViewById(R.id.btn_agenda).setOnClickListener(
                 click -> {
                     if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_DENIED) {
@@ -91,6 +97,12 @@ public class ReservationActivity extends AppCompatActivity {
 
             //sendNotificationOnChannel(title, datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear()+" à "+timePicker.getHour()+":"+timePicker.getMinute(), nbPersonne, CHANNEL1_ID, NotificationCompat.PRIORITY_LOW);
         });
+
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
+                });
     }
     private void addToAgenda(){
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {

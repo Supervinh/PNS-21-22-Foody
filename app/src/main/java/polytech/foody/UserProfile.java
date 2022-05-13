@@ -45,9 +45,15 @@ public class UserProfile extends AppCompatActivity {
 
         findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
+                });
+
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
                 });
     }
 

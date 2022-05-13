@@ -52,11 +52,17 @@ public class ReviewCreationActivity extends AppCompatActivity {
 
                 });
 
-        findViewById(R.id.buttonAnnuler).setOnClickListener(
+        findViewById(R.id.buttonCancel).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), MyService.class);
                     startService(intent);
                 });
 
+
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
+                });
     }
 }

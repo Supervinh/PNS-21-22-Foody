@@ -1,24 +1,28 @@
 package polytech.foody;
 
-import android.Manifest;
+
+import static polytech.foody.MainActivity.CHANNEL1_ID;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-public class CommentCreationActivity extends AppCompatActivity {
-
+public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.comments);
+        setContentView(R.layout.notifications);
 
-        String txt = "Commentaires";
+        String txt = "Notifications";
         TextView textView = findViewById(R.id.textHeader);
         textView.setText(txt);
-
 
         findViewById(R.id.btn_add_post).setOnClickListener(
                 click -> {
@@ -38,6 +42,31 @@ public class CommentCreationActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
 
+        findViewById(R.id.textView2).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.imageView9).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.textView3).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), CommentCreationActivity.class);
+                    startActivity(intent);
+                });
+
+        findViewById(R.id.imageView10).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), CommentCreationActivity.class);
+                    startActivity(intent);
+                });
+
+
         findViewById(R.id.btn_search).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
@@ -50,19 +79,6 @@ public class CommentCreationActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
-                });
-
-        findViewById(R.id.buttonCancelComment).setOnClickListener(
-                click -> {
-                    Intent intent = new Intent(getApplicationContext(), MyService.class);
-                    startActivity(intent);
-
-                });
-
-        findViewById(R.id.bell).setOnClickListener(
-                click -> {
-                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
-                    startActivity(intent);
                 });
     }
 }

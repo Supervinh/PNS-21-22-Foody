@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
                 });
 
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
+                });
+
         createNotificationChannels();
     }
 

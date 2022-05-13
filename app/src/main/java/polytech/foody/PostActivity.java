@@ -81,9 +81,15 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
 
         findViewById(R.id.btn_back).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
+                });
+
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
                 });
 
         findViewById(R.id.buttonPost).setOnClickListener(click -> {
@@ -98,6 +104,7 @@ public class PostActivity extends AppCompatActivity implements IPictureActivity,
 
             sendNotificationOnChannel(title, message, CHANNEL1_ID, NotificationCompat.PRIORITY_HIGH);
         });
+
         findViewById(R.id.buttonAnnuler).setOnClickListener(
                 click -> {
                     Intent intent = new Intent(getApplicationContext(), MyService.class);

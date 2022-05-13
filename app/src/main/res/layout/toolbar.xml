@@ -19,7 +19,7 @@
         android:textSize="24sp"/>
 
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/bell"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:clickable="true"

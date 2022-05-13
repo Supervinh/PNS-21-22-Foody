@@ -80,9 +80,15 @@ public class RestaurantActivity extends FragmentActivity implements IGPSActivity
 
         findViewById( R.id.btn_back ).setOnClickListener(
                 click -> {
-                    Intent intent = new Intent(getApplicationContext(), GpsTest.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
 
+                });
+
+        findViewById(R.id.bell).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
                 });
 
     }
